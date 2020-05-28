@@ -1,0 +1,2956 @@
+/* 
+    site hosted online on netlify.com here : 
+
+    https://amazing-beaver-0296ae.netlify.com/
+
+*/
+
+/*
+    image editing done by Hadi Abdallah
+*/
+
+/* 
+    fonts DO NOT F*CK WITH THIS 
+*/
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300&family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
+* {
+    outline: none;
+    transition: .2s all;
+    font-family: 'Poppins',sans-serif !important;
+}
+
+/* 
+    smooth-scrolling , who doesn't love that? 
+*/
+html {
+    scroll-behavior: smooth !important;
+}
+
+/* 
+    scrollbar editing and styling 
+*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+
+@media screen and (max-width:768px) {
+
+    /* no scrollbar needed here */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* 
+    overflow-x:hidden solves a very random bug that we still don't know why it happens sometimes,
+    also some defaults
+*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Poppins',sans-serif !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* 
+    navbar,footer,back-to-top button, index page, about page, gallery page done by Cirstoiu Bogdan-Florin.
+*/
+
+/* 
+    nav-bar styling 
+*/
+nav {
+    background: rgba(8, 8, 8, 1);
+    font-family: 'Poppins', sans-serif;
+    padding: 0 !important;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1rem;
+}
+
+nav ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0;
+}
+
+nav ul li a:hover {
+    color: lightskyblue;
+}
+
+/* centering the links */
+.navbar-collapse {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+
+/*  
+    3 lines in a box that rotate, while the middle one dissapears, for a cool little animation
+    - bogdan-florin
+*/
+
+
+.navbar-toggler .line {
+    width: 100%;
+    float: left;
+    clear: left;
+    height: 2px;
+    background-color: white;
+    margin: 3px;
+    margin-right: 0;
+}
+
+.navbar-toggler {
+    border: none;
+    background: transparent !important;
+    width: 38px;
+    padding: 0;
+}
+
+.navbar-toggler .line {
+    transition: all 0.2s;
+}
+
+
+/* 
+    the first animation, the one that opens the nav
+*/
+.navbar-toggler .top-bar {
+    transform: rotate(50deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+    transform: rotate(-50deg);
+    transform-origin: 10% 90%;
+}
+
+
+/*
+    second animation, that resets the lines back to normal
+*/
+.navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+/* 
+    removes ugly outline of the button 
+*/
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.nav-item button{
+    background-color: transparent;
+    color:white;
+    border:none;
+}
+.nav-item button:focus{
+    outline:none;
+}
+
+.dropdown-box{
+    background-color: #171717;
+    color:white;
+    position: absolute;
+    margin-top:25px;
+    margin-right:20px;
+    display:none;
+    transition: .2s all;
+}
+.dropdown-list{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    color:white;
+    transition: .2s all;
+}
+.dropdown-item:hover{
+    background-color: #2e2e2e !important;
+}
+.down{
+    display: block;
+}
+
+
+
+/*
+    Search overlay
+*/
+.search{
+    padding:1rem;
+}
+.search-icon{
+    width:35px;
+    height:35px;
+    color:white;
+    margin: 0;
+    padding:0;
+
+}
+.search-overlay{
+    position: fixed;
+    margin:0;
+    padding:0;
+    top:0;
+    background: rgba(46, 46, 46, 0.7);
+    overflow: hidden;
+    transition: .3s all;
+}
+.expanded-mine{
+    height:100vh;
+    width:100vw;
+    z-index:7000;
+}
+.collapsed-mine{
+    height:0;
+    width:100vw;
+    z-index:1;
+}
+.search-bar{
+    z-index:10000;
+}
+.search-overlay .circle{
+    background-color:#171717;
+    transition: .2s all;
+}
+.search-overlay .circle:hover{
+    background-color:#666666;
+}
+.form-inline {
+    width: 100% !important;
+}
+.input-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height:100px;
+    width:500px !important;
+}
+.input-group-text {
+    border: 0 !important;
+    border-radius: 20px;
+    background-color: #171717 !important;
+}
+.form-control {
+    border: 0 !important;
+    border-radius: 20px;
+    font-size: 30px !important;
+    background-color: #171717 !important;
+}
+
+
+@media screen and (min-width:992px) {
+    .navbar-collapse form {
+        display: none;
+    }
+
+    .navbar-collapse hr {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:991px) {
+
+    /*
+    to position elements the way i wanted, i had to wrap them in a box and set the padding there.
+    this solves a number of issues, mainly with the hr in the collapsed nav not taking full width, and the links being mispositioned.
+*/
+    .nav-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+/*
+    hiding the search button because there's already a form
+*/
+    .search{
+        display:none;
+    }
+
+    /*
+    styling the collapsed navbar
+*/
+    nav ul li a {
+        color: white;
+        font-size: 1rem;
+    }
+
+    .navbar {
+        padding: 0;
+    }
+
+    nav ul li {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        margin: 0;
+        padding: 20px;
+    }
+
+    nav ul li:nth-child(5) {
+        border: none;
+    }
+
+    .navbar-collapse {
+        transition-duration: .4s;
+        transition-timing-function: ease-in-out !important;
+    }
+
+    nav ul {
+        transition-duration: .4s;
+        transition-timing-function: ease-in-out !important;
+    }
+
+    .navbar {
+        background: rgba(8, 8, 8, 1);
+    }
+
+    .navbar-collapse ul {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        padding: 20px 40px 8px;
+    }
+
+    /*
+    styling the hr in the collapsed navbar
+*/
+    .navbar-collapse hr {
+        width: 100vw;
+        color: white;
+        background-color: white;
+        height: 1px;
+        border: none;
+        padding: 0;
+    }
+
+    nav hr {
+        margin-bottom: 0;
+    }
+
+    /*
+    styling for the search form
+*/
+    .form-inline {
+        width: 80% !important;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100% !important;
+        height:auto;
+    }
+
+    .input-group-text {
+        border: 0 !important;
+        border-radius: 12px;
+        background-color: #171717 !important;
+    }
+
+    .form-control {
+        border: 0 !important;
+        border-radius: 12px;
+        font-size: 16px !important;
+        background-color: #171717 !important;
+    }
+
+}
+
+/* 
+    back to top button 
+*/
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    float: right;
+    right: 40px;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.1);
+    max-width: 50px;
+    max-height: 50px;
+    width: 100%;
+    border: none;
+    padding: 0;
+    transition: .2s ease-in-out;
+}
+
+#back-to-top a {
+    color: white;
+
+}
+
+#back-to-top:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+#back-to-top:focus{
+    outline:none;
+}
+.back-to-top{
+    height:50px;
+    width:50px;
+}
+@media screen and (max-width:768px) {
+    #back-to-top {
+        background-color: rgba(128, 128, 128, 0.5);
+        right: 15px;
+        bottom: 15px;
+        max-width:40px;
+        max-height: 40px;
+    }
+    .back-to-top{
+        height:40px;
+        width:40px;
+    }
+}
+
+
+/* 
+    header image and box and text
+*/
+.head {
+    height: 140vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    position: relative;
+    text-align: end;
+}
+
+.head-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    color: inherit;
+}
+
+.head-text {
+    font-size: 80px;
+}
+
+.head img {
+    height: 140vh;
+    width: 100vw;
+}
+
+/* Yay responsiveness */
+@media screen and (max-width:991px) {
+    .head {
+        height: 100vh;
+    }
+
+    .head img {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .head {
+        height: 80vh;
+    }
+
+    .head img {
+        height: 80vh;
+    }
+
+    .head-overlay {
+        height: 80vh;
+    }
+}
+
+/*
+    This solves stretching issues with the header photos
+*/
+@media screen and (max-width:593px) {
+    .head-text {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width:470px) {
+    .head {
+        height: 60vh;
+    }
+
+    .head img {
+        height: 60vh;
+    }
+
+    .head-overlay {
+        height: 60vh;
+    }
+
+    .head-text {
+        font-size: 40px;
+    }
+}
+
+/* 
+    Favourite color 
+*/
+.lightskyblue {
+    color: lightskyblue;
+}
+
+/* 
+    Why-choose-us section 
+*/
+.why-choose {
+    height: 80vh;
+    width: 100vw;
+    background-color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.why-choose-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.why-choose-top {
+    height: 40%;
+}
+
+.why-choose-bottom {
+    height: 60%;
+}
+
+.choose-text-big {
+    font-size: 45px;
+}
+
+.choose-text-small {
+    font-size: 25px;
+}
+
+.choose-text-smaller {
+    font-size: 14px;
+}
+
+/*
+    Yay reponsiveness for Why-choose-section
+*/
+@media screen and (max-width:576px) {
+    .choose-text-big {
+        font-size: 2rem;
+    }
+
+    .choose-text-small {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .why-choose {
+        height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/* 
+    Card layout (the small ones)
+*/
+.main-classes {
+    height: auto;
+    width: 100vw;
+    background-color: #e0e0e0;
+}
+
+/*
+    split into 2 sections each
+*/
+.main-classes-top {
+    height: 20%;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.main-classes-bottom {
+    height: 80%;
+}
+
+/*
+    two different sizes
+*/
+.main-card-small {
+    height: 300px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.main-card-big {
+    height: 400px;
+    overflow: hidden;
+    padding: 0;
+}
+
+/*
+    photo part
+*/
+.card-photo {
+    height: 70%;
+    width: 100%;
+    z-index: 0;
+}
+
+/*
+    text-part
+*/
+.card-text {
+    height: 30%;
+    width: 100%;
+    background-color: #666666;
+    position: relative;
+}
+
+/*
+    styling the link to look like a button
+*/
+.card-text a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    position: absolute;
+    right: 16px;
+    bottom: 20px;
+    z-index: 3;
+    transition: .2s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-text a:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/*
+    bigger link size
+*/
+.card-a-big {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 40px !important;
+    line-height: 70px !important;
+}
+
+/*
+    big text small text yay
+*/
+.card-text-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-text-small {
+    font-size: 14px;
+    color: lightskyblue;
+    z-index: 3;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+/*
+    big text small text for bigger cards
+*/
+.card-text-title-big {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-text-small-big {
+    font-size: 20px;
+    color: lightskyblue;
+    z-index: 3;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+/*
+    cool pseudo-element that sits behind the text and has been rotated and hidden when overflowing outside the card container
+*/
+.card-text:after {
+    position: absolute;
+    left: -5px;
+    top: -44px;
+    height: 100px;
+    width: 700px;
+    border-top: 4px solid #e0e0e0;
+    background: #666666;
+    content: "";
+    -webkit-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+    z-index: 1;
+}
+
+/*
+    background images for each card
+*/
+#card-1 {
+    background-image: url(../images/crossfit-main.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#card-2 {
+    background-image: url(../images/barre-main.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#card-3 {
+    background-image: url(../images/spinning-main.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#card-4 {
+    background-image: url(../images/zumba-main.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+#card-5 {
+    background-image: url(../images/pilates-main.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+/*
+    first responsive part, the card shift position and
+    go into 2 rows of 2, and the 4th card has been resized
+    to fit the smaller ones
+*/
+@media screen and (max-width:990px) {
+    #main-card-md {
+        height: 300px !important;
+    }
+
+    #main-card-md-text-small {
+        font-size: 14px !important;
+    }
+
+    #main-card-md-title-small {
+        font-size: 25px !important;
+    }
+
+    #card-a-big-1 {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 24px !important;
+        line-height: 50px !important;
+    }
+}
+
+/*
+    second responsive part, when the screen becomes even smaller, the final 5th card is resized and all card go into one column
+*/
+@media screen and (max-width:768px) {
+    #main-card-md-2 {
+        height: 300px !important;
+    }
+
+    #main-card-md-text-small-2 {
+        font-size: 14px !important;
+    }
+
+    #main-card-md-title-small-2 {
+        font-size: 25px !important;
+    }
+
+    #card-a-big-2 {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 24px !important;
+        line-height: 50px !important;
+    }
+}
+
+/*
+    Offer banner styling
+*/
+.offer-banner {
+    height: 70vh;
+    background-image: url(../images/offer-banner.jpg);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.offer-text-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 70px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.offer-text-normal {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.offer-banner a {
+    padding: 17px 30px 16px;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid lightskyblue;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    transition: .2s ease-in-out;
+}
+
+.offer-banner a:hover {
+    background-color: lightskyblue;
+}
+
+/*
+    Yay offer banner responsiveness
+*/
+@media screen and (max-width:800px) {
+    .offer-banner {
+        height: auto;
+    }
+
+    .offer-text-title {
+        font-size: 2rem;
+    }
+
+    .offer-text-normal {
+        font-size: 1rem;
+    }
+}
+
+/*
+    Online training banner and inspirational carousel
+*/
+.info {
+    height: 60vh;
+    width: 100vw;
+    background-color: #e0e0e0;
+    text-shadow: none !important;
+}
+
+.info-left {
+    height: 60vh;
+}
+
+.info-right {
+    height: 60vh;
+    background-image: url("../images/info.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.info-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    color: #171717;
+    font-weight: 900;
+}
+
+/*
+    used in the inspirational carousel
+*/
+#special-info-text {
+    font-size: 2.7rem !important;
+}
+
+.info-text-small {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #171717;
+}
+
+.info-right-carousel {
+    height: 60vh;
+    background: none;
+}
+
+.info-right-carousel img {
+    height: 60vh;
+}
+
+
+/*
+    new card layout (the big ones)
+*/
+.new {
+    height: 80vh;
+    text-align: center;
+    text-shadow: 3px 3px 8px black;
+}
+
+/*
+    done with pseudo-elements, images have reduced color
+    and on hover, they are saturated so they "pop", they link to almost all of the other pages
+*/
+
+/*
+    setting up each card with the respective photo
+*/
+.main-1:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background1.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+.main-2:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background2.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+.main-3:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background3.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+.main-4:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background4.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+.main-5:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background5.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+.main-6:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/new-background6.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: .4s ease-in-out;
+    overflow: hidden;
+}
+
+/*
+    font styling for cards 
+*/
+.main-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+
+.main-text-small {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    position: relative;
+}
+
+/*
+    saturating the background images in the :before element
+*/
+.main-1:hover:before,
+.main-2:hover:before,
+.main-3:hover:before,
+.main-4:hover:before,
+.main-5:hover:before,
+.main-6:hover:before {
+    filter: saturate(2);
+    transition: .4s ease-in-out;
+}
+
+/*
+    also adding some text-shadow to improve visibility
+*/
+.main-1:hover,
+.main-2:hover,
+.main-3:hover,
+.main-4:hover,
+.main-5:hover,
+.main-6:hover span {
+    text-shadow: 3px 3px 8px black;
+}
+
+/*
+    Yay responsiveness for the big cards
+*/
+@media screen and (max-width:768px) {
+
+    /*
+        giving them a smaller height
+    */
+    .new {
+        height: 50vh;
+    }
+
+    /*
+        saturates all the images at all times, because there is no hover on mobile screens
+    */
+    .main-1:before,
+    .main-2:before,
+    .main-3:before,
+    .main-4:before,
+    .main-5:before,
+    .main-6:before {
+        filter: saturate(2);
+    }
+
+    /*
+        also adds the text-shadow at all times
+    */
+    .main-1 span,
+    .main-2 span,
+    .main-3 span,
+    .main-4 span,
+    .main-5 span,
+    .main-6 span {
+        text-shadow: 3px 3px 8px black;
+    }
+
+    /*
+        font styling
+    */
+    .main-text {
+        font-size: 3rem;
+    }
+
+    .main-text-small {
+        font-size: 1.5rem;
+    }
+
+    /*
+        inspirational carousel responsiveness
+    */
+    .info {
+        height: auto;
+    }
+
+    .info-right {
+        height: 40vh;
+    }
+
+    .info-left {
+        height: auto;
+        padding: 20px;
+    }
+
+    .info-right-carousel {
+        height: 40vh;
+    }
+
+    .info-right-carousel img {
+        height: 40vh;
+    }
+
+    .info-text {
+        font-size: 3rem;
+    }
+
+    .info-text-small {
+        font-size: 1rem;
+    }
+}
+
+
+/*
+    even smaller text for the cards on smaller screens
+*/
+@media screen and (max-width:576px) {
+    .main-text {
+        font-size: 2rem !important;
+    }
+
+    .main-text-small {
+        font-size: 1rem !important;
+    }
+}
+
+
+/*
+    About page - Cirstoiu Bogdan-Florin 
+*/
+
+/*
+    Font styling for header, candle incident banner and team banner
+*/
+.about-title {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 0.003rem;
+}
+
+.about-title-small {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.003rem;
+}
+
+.about-text {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    color: #171717;
+    font-weight: normal;
+}
+#special-about-text{
+    font-size: 1rem !important;
+}
+.about-text-big {
+    font-size: 55px;
+    font-family: 'Poppins', sans-serif;
+    color: #171717;
+    font-weight: bold;
+}
+
+/*
+    header
+*/
+.gym {
+    height: 80vh;
+    width: 100%;
+    background-image: url(../images/gym-background.jpg);
+    background-size: cover;
+    background-position: top;
+    margin: 0;
+    padding: 0;
+    padding: 50px;
+    padding-top: 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/*
+    candle-incident banner and office-team banner
+*/
+.about-card {
+    height: 50vh;
+}
+
+.about-left {
+    background-color: #e0e0e0;
+    height: 50vh;
+}
+
+.about-right {
+    background-image: url("../images/candle.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+
+#office-team {
+    background-image: url("../images/office-team.jpg");
+    background-position: top;
+}
+
+/*
+    carousel with us on it
+*/
+#meet-the-team {
+    height: 90vh;
+}
+
+.team-right {
+    height: 90vh;
+}
+
+.team-left {
+    height: 90vh;
+    background-color: #e0e0e0;
+}
+
+.team-carousel {
+    height: 90vh;
+    width: 50vw;
+}
+
+.team-carousel img {
+    height: 90vh;
+    width: 100vw;
+}
+
+/*
+    quotes part
+*/
+.quotes {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+
+/*
+    the 2 banners
+*/
+#gym-offer {
+    background-image: url(../images/gym-offer.jfif);
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+}
+
+#gym-classes {
+    background-image: url(../images/gym-classes.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+}
+
+/*
+    Mr. Bob-Sixpack himself wrote this, says it's his favourite color
+*/
+.bob-sixpack {
+    color: lightskyblue;
+}
+
+/*
+    Yay responsiveness for the candle and team banners
+*/
+@media screen and (max-width:1300px) {
+    .about-card {
+        height: auto;
+    }
+
+    .about-left {
+        height: auto;
+    }
+}
+
+/*
+    Yay responsiveness for the about page
+*/
+@media screen and (max-width:768px) {
+
+    /*
+        resizing the header and the fonts
+    */
+    .gym {
+        height: auto;
+        background-position: center;
+        padding: 20px;
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+
+    .about-title {
+        font-size: 3rem !important;
+    }
+
+    .about-title-small {
+        font-size: 1rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-text-big {
+        font-size: 2rem;
+    }
+
+    /*
+        resizing the banners
+    */
+    #gym-classes,
+    #gym-offer {
+        height: 40vh;
+    }
+
+    /*
+        resizing the containers for the trainer carousel
+    */
+    .about-card {
+        height: auto;
+    }
+
+    .about-left {
+        height: auto;
+    }
+
+    .about-right {
+        height: 40vh;
+    }
+
+    /*
+        resizing font for the quotes
+    */
+    .quotes {
+        font-size: 0.9rem;
+    }
+
+    /*
+        resizing the carousel so the images don't look stretched
+    */
+    .team-left {
+        height: auto;
+    }
+
+    .team-right {
+        height: 55vh;
+    }
+
+    .team-right img {
+        height: 55vh;
+    }
+
+    .team-carousel {
+        width: 100vw;
+        height: 55vh;
+    }
+
+    /*
+        Yay easter-egg
+    */
+    #office-team {
+        background-image: url(../images/office-team.jpg);
+        height: 35vh;
+    }
+
+    #meet-the-team {
+        height: auto;
+    }
+}
+
+/*
+    fixed a problem in some phones where the banners would have the text too big
+*/
+@media screen and (max-width:850px){
+    #special-about-title{
+        font-size: 4.5rem;
+    }
+}
+@media screen and (max-width:450px){
+    #special-about-title{
+        font-size: 2.5rem !important;
+    }
+}
+@media screen and (max-width:360px){
+    #special-about-title{
+        font-size: 2rem !important;
+    }
+}
+
+
+/*
+    Discover page - Cirstoiu Bogdan-Florin
+*/
+
+/*
+    the two banners 
+*/
+.trainers {
+    height: 70vh;
+}
+
+.classes {
+    height: 70vh;
+}
+/*
+    same trick used on the index page, with pseudo-elements
+*/
+
+.ar-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.article-image1:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/trainers.jpg);
+    background-size: cover;
+    overflow: hidden;
+    transition: .4s ease-in-out;
+}
+
+.article-image2:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../images/class.jpg);
+    background-size: cover;
+    transition: .4s ease-in-out;
+}
+
+/*
+    same saturating thing, with the text shadow too
+*/
+.article-image1:hover:before {
+    filter: saturate(3);
+    transition: .4s ease-in-out;
+}
+
+.article-image2:hover:before {
+    filter: saturate(3);
+    transition: .4s ease-in-out;
+}
+
+.article-image1:hover,
+.article-image2:hover {
+    text-shadow: 3px 3px 8px black;
+}
+
+/*
+    the header
+*/
+.discover-box {
+    height: 80vh;
+    width: 100vw;
+    color: white;
+    background-image: url(../images/discover.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+/*
+    the cards 
+*/
+.discover-info {
+    background-color: #e0e0e0;
+    height: 60vh;
+}
+
+.discover-info-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    color: #171717;
+}
+
+.discover-info-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #171717;
+}
+
+.discover-photo {
+    background-image: url(../images/trainer-info.jpg);
+    background-size: cover;
+    background-position: top;
+}
+
+#discover-classes {
+    background-image: url(../images/discover-classes.png);
+    background-position: center;
+}
+
+.discover-title {
+    font-size: 80px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+.discover-title-small{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color:lightskyblue;
+}
+
+.discover-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px;
+    color: white;
+    position: relative;
+}
+
+/* 
+    trainer page 
+*/
+
+.trainer {
+    height: 80vh;
+    width: 100vw;
+    background-image: url("../images/trainer-header.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.trainer-title {
+    font-size: 80px;
+    color: white;
+    margin: 0;
+}
+
+.trainer-title-small {
+    font-size: 30px;
+    color: lightskyblue;
+}
+
+.leadership{
+    height: auto;
+    color:#171717;
+    background-color:#e0e0e0;
+    text-align: center;
+}
+.leadership-title{
+    font-size: 40px;
+}
+.leadership-title-small{
+    font-size: 20px;
+}
+
+
+.trainer-card{
+    text-align: left;
+    padding:20px;
+}
+.trainer-card:hover{
+    background-color:white;
+}
+.trainer-card:hover .arrow-circle{
+    background-color: #e0e0e0;
+}
+.trainer-card-top{
+    margin-bottom:40px;
+}
+.trainer-image-circle{
+    border-radius: 100%;
+    background-color: black;
+    height: 200px;
+    width:200px;
+    background-position: center;
+    background-size: cover;
+}
+#bob-sixpack{
+    background-image: url(../images/bob-sixpack-head.png);
+}
+#frontdesk-officelady{
+    background-image: url(../images/front-desk-lady-head.jpg);
+}
+#bob{
+    background-image: url(../images/Bob-head.jpg);
+}
+#hadi{
+    background-image: url(../images/Hadi-head.jpg);
+}
+#satish{
+    background-image: url(../images/Satish-head.jpg);
+}
+#mihai{
+    background-image: url(../images/Mihai-head.jpg);
+}
+.arrow-circle{
+    border-radius: 100%;
+    background-color:white;
+    height: 50px;
+    width:50px;
+}
+.arrow-circle:hover{
+    background-color: lightskyblue !important;
+}
+
+
+.trainer-overlay{
+    background-color:rgba(46, 46, 46, 0.9);
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+}
+.trainer-overlay .row{
+    height: 70vh;
+    width:  60vw;
+}
+.trainer-overlay .arrow-circle{
+    background-color: black !important;
+}
+.trainer-overlay .arrow-circle:hover{
+    background-color: lightskyblue !important;
+}
+.trainer-overlay-left{
+    background-color:#171717;
+    height: 100%;
+    width:  100%;
+}
+.trainer-overlay-right{
+    background-color:#e0e0e0;
+    height: 100%;
+    width:  100%;
+}
+.trainer-overlay-left img{
+    width:inherit;
+    height: 40vh;
+}
+.opened{
+    z-index:9999;
+    width:100vw;
+    height: 100vh;
+    display: flex;
+}
+.trainer-info{
+    overflow-y:scroll;
+    height:35vh;
+}
+.trainer-info img{
+    height: 20px;
+    width:20px;
+}
+.trainer-info a{
+    color:#171717;
+    text-decoration: underline;
+}
+.trainer-info a:hover{
+    color:lightskyblue;
+}
+.trainer-social{
+    height: 20vh;
+}
+.trainer-social img{
+    width:30px;
+    height: 30px;
+    margin-right: 5px;
+}
+.trainer-link{
+    color:white;
+    outline:none;
+    background-color: #2e2e2e;
+    border-radius: 25px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:15px;
+    padding-right: 15px;
+    font-size: 14px;
+    width:220px;
+}
+.trainer-link:hover{
+    background-color: white;
+    color:#171717;
+}
+.arrow-position{
+    position: absolute;
+    top:-24px;
+    left:640px;
+}
+
+@media screen and (max-width:768px)
+{
+    .trainer{
+        height: 60vh;
+    }
+    .leadership-title{
+        font-size: 30px;
+    }
+    .leadership-title-small{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width:1240px){
+    .trainer-overlay .row{
+        height: 80vh;
+        width:  80vw;
+    }
+    .trainer-link{
+        margin-bottom:10px;
+    }
+}
+@media screen and (max-width:999px){
+    .trainer-overlay .row{
+        height: 80vh;
+        width:  100vw;
+    }
+    .trainer-link{
+        width:190px;
+        font-size: 12px;
+    }
+    .trainer-overlay-right .h1, h1{
+        font-size: 2rem;
+    }
+    .trainer-overlay-right .h4, h4{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-height:705px){
+    .trainer-social{
+        height:30vh;
+    }
+}
+
+
+/*
+    Classes page
+*/
+.class-container {
+    height: auto;
+    width: 100vw;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.class-background {
+    background-image: url(../images/class-background.jpg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    font-weight: bold;
+}
+.class-title-small{
+    font-size: 40px;
+    color:lightskyblue;
+    font-weight: normal;
+}
+.class-banner{
+    width:100vw;
+    background-color:#e0e0e0;
+    color:#171717;
+    text-align: center;
+}
+.class-banner-mid{
+    background-image: url(../images/class-banner-mid.jpg);
+    background-position: center;
+    background-size: cover;
+    height:50vh;
+    font-size: 80px;
+    color:white;
+    font-weight: bold;
+}
+.class-text{
+    color:#171717;
+    font-size: 40px;
+    font-weight: bold;
+}
+.class-text-small{
+    color:lightskyblue;
+    font-size: 20px;
+}
+
+.mt{
+    margin-top:4rem;
+}
+.class-card{
+
+}
+.card-overlay{
+    background-color: rgba(1, 1, 1, .6);
+    width:325px;
+    height:325px;
+    color:white;
+    font-size: 18px;
+    opacity: 0;
+    transition: .3s all;
+}
+.card-overlay:hover{
+    opacity: 1;
+}
+.class-card-top{
+    height:325px;
+    width:325px;
+    background-position: center;
+    background-size: cover;
+}
+.class-card-bottom{
+    text-align: left;
+    padding:10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.sign-up-button{
+    background-color:transparent;
+    border:none;
+    outline:none !important;
+    border: 1px solid #000;
+    font-size: 16px;
+    transition: .2s all;
+}
+.sign-up-button:hover{
+    color:white;
+    background-color: black;
+}
+#crossfit{
+    background-image: url(../images/crossfit.jpg);
+    
+}
+#pulse-strength{
+    background-image: url(../images/sweat-burn.jpg);
+}
+#tighten-up{
+    background-image: url(../images/sweat-burn2.jpg);
+}
+#yoga{
+    background-image: url(../images/yoga.jpg);
+}
+#pilates{
+    background-image: url(../images/pilates.jpg);
+}
+#spinning{
+    background-image: url(../images/spinning.jpg);
+}
+#spinning2{
+    background-image: url(../images/spinning2.jpg);
+}
+#zumba{
+    background-image: url(../images/zumba.jpg);
+}
+#step{
+    background-image: url(../images/step-move.jpg);
+}
+#barre{
+    background-image: url(../images/barre.jpg);
+}
+#boxing{
+    background-image: url(../images/boxing.jpg);
+}
+#power-cross{
+    background-image: url(../images/power-cross.jpg);
+}
+#TRX{
+    background-image: url(../images/TRX.jpg);
+}
+.class-banner-mid button{
+    color:lightskyblue;
+    border-color: lightskyblue;
+    border-width: 2px;
+    font-size: 25px;
+}
+.class-banner-mid button:hover{
+    background-color: lightskyblue;
+    color:white;
+}
+#class-banner-bottom{
+    background-image: url(../images/class-banner-bottom.jpg);
+}
+
+@media screen and (max-width:1170px){
+    .class-card-top{
+        margin-top:2rem;
+    }
+}
+@media screen and (max-width:1100px){
+    .class-banner-mid p{
+        font-size: 60px;
+    }
+    #class-welcome{
+        width: 90% !important;
+    }
+}
+@media screen and (max-width:800px){
+    .class-background p{
+        font-size: 60px;
+    }
+    .class-background .class-title-small{
+        font-size: 30px;
+    }
+    .class-background{
+        height: 60vh;
+    }
+    .class-banner-mid p{
+        font-size: 40px;
+    }
+}
+@media screen and (max-width:660px){
+    .class-banner-mid p{
+        font-size: 35px;
+    }
+    .class-banner-mid{
+        height: 40vh;
+    }
+}
+/* contact page */
+.contain {
+    height: 80vh;
+    width: 100vw;
+    padding-bottom: 6rem !important;
+    background-image: url(../images/contact.jpg);
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.contact-us {
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+    color: white;
+}
+
+.contact-us-small {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: lightskyblue;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.office {
+    background-image: url("../images/office.jpg");
+    background-size: cover;
+    height: 120vh;
+    margin: 0;
+    padding: 0;
+}
+
+.office-text {
+    font-size: 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.office-address {
+    color: gray;
+}
+
+.office-info {
+    color: limegreen;
+}
+
+.contact {
+    background-color: #e0e0e0;
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-title {
+    font-size: 40px;
+}
+
+.contact-title-small {
+    font-size: 16px;
+}
+
+.top-side {
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+}
+
+.text-area {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    background-color: #e0e0e0;
+}
+
+input[type=text]:focus {
+    border: 1px solid #555;
+}
+
+.contact-button {
+    background-color: lightskyblue;
+    border: 0;
+    padding: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 15px;
+    outline: none;
+    transition: .4s ease-in-out;
+}
+
+.contact-button:focus {
+    outline: none;
+}
+
+.contact-button:hover {
+    background-color: gray;
+}
+
+#contact-body {
+    background-color: #171717;
+}
+.contact textarea{
+    background-color: #e0e0e0;
+}
+
+
+/* class schedule */
+.schedule {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+.in-schedule {
+    height: 90vh;
+    text-align: center;
+    background-image: url("../images/schedule.jpg");
+    background-size: cover;
+}
+
+.mobile-schedule {
+    display: none;
+}
+
+.schedule th {
+    font-size: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: black;
+    margin: 5px;
+}
+
+.schedule-data {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: black;
+    border-left-color: lightskyblue;
+    border-left-width: 2px;
+    border-left-style: solid;
+    margin: 5px;
+    margin-left: 0;
+}
+
+.schedule-data:hover {
+    background-color: white;
+    color: black;
+    border-left-color: orangered;
+    font-weight: bolder;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+
+.tr {
+    color: lightskyblue;
+    background-color: black;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+
+
+
+
+/* nutrition page */
+.nutrition-header {
+    height: 80vh;
+    width: 100vw;
+    background-image: url(../images/nutrition.jpeg);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+.nutrition-title{
+    font-size: 80px;
+    font-weight: bold;
+    color:white;
+    font-family: 'Poppins',sans-serif;
+}
+.nutrition-title-small{
+    font-size: 30px;
+    font-family: 'Poppins',sans-serif;
+    color:lightskyblue;
+}
+.nutrition-content{
+    color:white;
+    font-family: 'Poppins',sans-serif;
+}
+.nutrition-breakfast-left{
+    background-color: #e0e0e0;
+    height:50vh;
+}
+.nutrition-breakfast-right{
+    background-image: url(../images/breakfast.jpg);
+    background-size: cover;
+    background-position: center;
+    height:50vh;
+}
+.nutrition-text-big{
+    font-size: 50px;
+    font-family: 'Poppins',sans-serif;
+    color:#171717;
+}
+.nutrition-text-small{
+    font-size: 20px;
+    font-family: 'Poppins',sans-serif;
+    color:#171717;
+}
+#nutrition-breakfast2{
+    background-image: url(../images/breakfast2.jpg);
+}
+.nutrition-breakfast-banner{
+    background-image: url(../images/breakfast-banner.jpg);
+    background-position: center;
+    background-size: cover;
+    height:40vh;
+    width:100vw;
+}
+.nutrition-lunch{
+    background-image: url(../images/lunch.jpg);
+    background-position: center;
+    background-size: cover;
+    height:60vh;
+}
+#lunch2{
+    background-image: url(../images/lunch1.jpg);
+}
+#lunch3{
+    background-image: url(../images/lunch2.jpg);
+}
+.nutrition-lunch-left{
+    background-color: #e0e0e0;
+    height:60vh;
+}
+.nutrition-dinner{
+    background-image: url(../images/dinner.jpg);
+    background-position: center;
+    background-size: cover;
+    height:50vh;
+}
+#nutrition-banner-2{
+    background-image: url(../images/nutrition-banner-2.jpg);
+}
+
+@media screen and (max-width:1650px){
+    .nutrition-breakfast-left, .nutrition-lunch-left, .nutrition-breakfast-right, .nutrition-lunch, .nutrition-dinner{
+        height: 80vh;
+    }
+}
+@media screen and (max-width:1310px){
+    .nutrition-title{
+        font-size: 60px;
+    }
+}
+@media screen and (max-width:1200px){
+    .nutrition-breakfast-left, .nutrition-lunch-left{
+        height: auto;
+    }
+    .nutrition-breakfast-right, .nutrition-lunch, .nutrition-dinner{
+        height:50vh;
+    }
+}
+@media screen and (max-width:600px){
+    .nutrition-title{
+        font-size: 40px;
+    }
+    .nutrition-title-small{
+        font-size: 20px;
+    }
+    .nutrition-header{
+        height: 60vh;
+    }
+}
+
+
+
+
+
+
+/*
+    Playlist page 
+*/
+
+.playlist-header {
+    background-image: url(../images/playlist.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.playlist-title {
+    font-size: 80px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-shadow: 3px 3px 4px black;
+}
+
+.playlist-title-small {
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    color: lightskyblue;
+    text-shadow: 1px 1px 1px black;
+}
+
+@media screen and (max-width:977px) {
+    .playlist-title {
+        font-size: 60px !important;
+    }
+
+    .playlist-title-small {
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .playlist-title {
+        font-size: 50px !important;
+    }
+
+    .playlist-title-small {
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .playlist-title {
+        font-size: 2.5rem !important;
+    }
+
+    .playlist-title-small {
+        font-size: 1rem !important;
+    }
+}
+
+.playlist-bg {
+    background-color: #171717;
+    height: auto;
+    text-align: center;
+}
+
+#playlist-1 {
+    background-image: url(../images/playlist-1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#playlist-2 {
+    background-image: url(../images/playlist-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#playlist-3 {
+    background-image: url(../images/playlist-3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.playlist-right {
+    height: 80vh;
+}
+
+.playlist-left {
+    height: 80vh;
+}
+
+.trap {
+    color: red !important;
+}
+
+.metal {
+    color: orange !important;
+}
+
+.hiphop {
+    color: yellow !important;
+}
+
+.spotify-playlist {
+    width: 100%;
+    height: 100%;
+}
+
+.playlist-hidden {
+    text-align: left !important;
+    display: none;
+    width: 100%;
+    height: auto;
+    background-color: black;
+}
+
+.disclaimer {
+    background-color: black;
+    color: white;
+    height: auto;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+@media screen and (max-width:991px) {
+
+    .playlist-left,
+    .playlist-right {
+        height: 40vh;
+    }
+
+    .playlist-left p {
+        display: none;
+    }
+
+    .playlist-hidden {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width:700px) {
+
+    .playlist-left,
+    .playlist-right {
+        height: 30vh;
+    }
+
+    .playlist-left p {
+        display: none;
+    }
+
+    .playlist-hidden .playlist-title {
+        font-size: 40px !important;
+    }
+
+    .playlist-hidden .playlist-title-small {
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .playlist-hidden .playlist-title {
+        font-size: 2rem !important;
+    }
+
+    .playlist-hidden .playlist-title-small {
+        font-size: 1rem !important;
+    }
+}
+
+
+/* membership page */
+.membership-header {
+    background-image: url(../images/membership.jpg);
+    background-size: cover;
+    height:80vh;
+    text-align: center;
+}
+
+.membership-title-big {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: 0.003rem;
+    color: white;
+}
+
+.membership-title-small {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.003rem;
+    color: lightskyblue;
+}
+
+.membership-content{
+    background-color:white;
+}
+.membership-card{
+    background-color: #2e2e2e;
+    text-align: center;
+    color:white;
+}
+.membership-card-small{
+    background-color: #e0e0e0;
+    text-align: center;
+}
+.membership-card-big{
+    background-color: #171717;
+    text-align: center;
+    color:white;
+}
+
+.membership-card-text{
+    font-size: 30px;
+}
+.membership-card-text-small{
+    font-size: 20px;
+}
+.membership-card-text-big{
+    font-size: 60px;
+}
+
+.membership-info{
+    font-size: 16px;
+}
+.buy-button{
+    background-color: #171717;
+    border-radius: 30px;
+    color:white;
+    padding-top:20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    width:30%;
+    transition: .2s all;
+    border:none;
+    margin-top:2rem;
+}
+.buy-button:hover{
+    background-color: lightskyblue;
+    color:#171717;
+}
+.membership-card-big .buy-button{
+    background-color: #2e2e2e;
+}
+.membership-card-big .buy-button:hover{
+    background-color: red;
+    color:white;
+}
+.membership-card-small .buy-button:hover{
+    background-color: white;
+    color:black;    
+}
+.red{
+    color:red;
+}
+.lightskyblue{
+    color:lightskyblue;
+}
+
+/* footer */
+.footer {
+    width: 100vw;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    bottom: 0;
+    margin:0;
+    padding:0;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+.footer a {
+    color: gray;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: lightskyblue;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-top: 10px;
+}
+
+.footer ul li {
+    font-size: 1rem;
+}
+
+.footer-top {
+    background-color: #2e2e2e;
+}
+
+.media-list li {
+    display: inline-block;
+    color: grey;
+}
+
+.footer-bottom p {
+    color: grey;
+    font-size: 14px;
+}
+
+.circle {
+    background-color: lightskyblue;
+    font-size: 20px;
+    color: #ffffff;
+    display: inline-block;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    line-height: 65px;
+    text-align: center;
+    float: left;
+    min-width: 65px !important;
+}
+
+.circle img {
+    height: 20px;
+    width: 20px;
+    color: white;
+}
+
+@media screen and (min-width:992px) and (max-width:1300px) {
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-text-big {
+        font-size: 2.6rem;
+    }
+
+    .discover-info-title {
+        font-size: 2.3rem;
+    }
+
+    .discover-info-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width:1199px) {
+    .legal_link {
+        border: none;
+    }
+
+    .main:hover {
+        transform: none;
+    }
+
+    .footer {
+        text-align: left;
+    }
+
+    .desktop-schedule {
+        display: none;
+    }
+
+    .in-schedule {
+        height: auto;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .mobile-schedule {
+        padding: 0;
+        width: 100%;
+        margin: 0;
+        display: table;
+        margin: 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .mobile-schedule .schedule-data {
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .info {
+        height: auto;
+    }
+
+    .trainer-text {
+        font-size: 3rem;
+    }
+
+    .trainer-text-small {
+        font-size: 1.4rem;
+    }
+
+    .trainer-description {
+        height: auto;
+    }
+
+    #meet-the-team {
+        height: auto;
+    }
+
+    .team-left {
+        height: auto;
+    }
+
+    .team-carousel {
+        width: 70vw;
+    }
+
+    .discover-info {
+        height: auto;
+    }
+
+    .discover-photo {
+        height: 50vh;
+    }
+
+
+}
+
+@media screen and (max-width:991px) and (min-width:769px) {
+    .office {
+        height: 60vh;
+    }
+
+    .info {
+        height: auto;
+    }
+
+    .info-right-carousel {
+        height: 50vh;
+    }
+
+    .info-right-carousel img {
+        height: 50vh;
+    }
+
+
+}
+
+@media screen and (max-width:768px) {
+    /* discover page */
+    /* removed the animation, fixed some problems with the span
+        resized the text and added a box on top with a bit of text
+        to look nicer
+    */
+    .trainers {
+        height: 50vh;
+    }
+
+    .classes {
+        height: 50vh;
+    }
+
+    .discover-box {
+        height: 60vh;
+        padding-left: 2rem;
+    }
+
+    .discover-title {
+        font-size: 2.7rem;
+        font-family: 'Oswald', sans-serif;
+        color: white;
+    }
+
+    .discover-title-small {
+        font-size: 1rem;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .article-image1:before {
+        filter: saturate(3);
+    }
+
+    .article-image2:before {
+        filter: saturate(3);
+    }
+
+    .article-image1 > span {
+        display: initial;
+    }
+
+    .article-image2 > span {
+        display: initial;
+    }
+
+    .article-image1 {
+        text-align: center;
+    }
+
+    .article-image2 {
+        text-align: center;
+    }
+
+    .article-image1:hover > span {
+        transition: none;
+        padding-top: 0;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+
+    .article-image2:hover > span {
+        transition: none;
+        padding-top: 0;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+
+    .trainers {
+        height: 40vh;
+    }
+
+    .classes {
+        height: 40vh;
+    }
+
+    .discover-text {
+        font-size: 3rem;
+        text-shadow: 3px 3px 8px black;
+    }
+
+    .discover-info {
+        height: auto;
+    }
+
+    .discover-photo {
+        height: 40vh;
+    }
+
+    .discover-info-title {
+        font-size: 2rem;
+    }
+
+    .discover-info-text {
+        font-size: 1rem;
+    }
+
+    .overlay {
+        height: 100%;
+    }
+
+
+
+
+
+    /* schedule page */
+    .desktop-schedule {
+        display: none;
+    }
+
+    .in-schedule {
+        height: auto;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .mobile-schedule {
+        padding: 0;
+        width: 100%;
+        margin: 0;
+        display: table;
+        margin: 10px;
+    }
+
+    .mobile-schedule .schedule-data {
+        font-size: 13px;
+        width: 100%;
+    }
+
+
+
+
+
+    /* contact page */
+    .contact-us {
+        font-size: 3rem;
+    }
+
+    .contact-us-small {
+        font-size: 1.5rem;
+    }
+
+    .contain {
+        background-position: center;
+        height: auto;
+        padding-top: 120px !important;
+    }
+
+    .office {
+        height: 70vh;
+    }
+
+
+
+
+
+    /* trainer page*/
+    .trainer {
+        background-position: center;
+        padding-top: 20px;
+    }
+
+    .trainer-title {
+        font-size: 2.3rem;
+    }
+
+    .trainer-title-small {
+        font-size: 1.5rem;
+    }
+
+    .trainer-text {
+        font-size: 3rem;
+    }
+
+    .trainer-text-small {
+        font-size: 1rem;
+    }
+
+    .trainer-description {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .trainer-card-Bob {
+        height: 50vh;
+    }
+
+    .trainer-card-Satish {
+        height: 50vh;
+    }
+
+    .trainer-card-Hadi {
+        height: 50vh;
+    }
+
+    .trainer-card-Mihai {
+        height: 50vh;
+    }
+
+    .trainer-data {
+        font-size: 1rem;
+        width: 120px;
+    }
+
+    .trainer-info {
+        font-size: 1rem;
+    }
+
+
+
+
+    /* footer */
+    /* changed font-size to better work for phones */
+
+}
+
+@media screen and (max-width:532px) {
+    .discover-title {
+        font-size: 2rem;
+    }
+
+}

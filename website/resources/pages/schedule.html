@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- CSS stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon-32x32.png" />
+    
+    <!-- Title -->
+    <title>VIAFit</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <a class="navbar-brand" href="../../index.html">
+            <img src="../images/logo.jpg" width="60" height="60" class="logo-main">
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon d-flex align-content-center flex-wrap mr-0">
+                <span class="line top-bar"></span> 
+                <span class="line middle-bar"></span> 
+                <span class="line bottom-bar"></span>
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="discover.html">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+          </div>
+      </nav>
+    <!-- left this simple because idk how i will implement the design yet, i am waiting for the java class to see how it will look -->
+    <div class="container-fluid in-schedule d-flex justify-content-md-center flex-wrap align-items-md-center">
+        <table class="schedule desktop-schedule">
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <tr>
+                <td class="tr">Zumba</td>
+                <td class="tr">Spinning</td>
+                <td class="tr">Crossfit</td>
+                <td class="tr">Barre</td>
+                <td class="tr">Yoga</td>
+            </tr>
+            <tr>
+                <td>
+                <ul class="schedule-data">
+                    <li>
+                        Bogdan-Florin
+                    </li>
+                    <li>
+                        9:00-11:00 AM
+                    </li>
+                    <li>
+                        35 spots
+                    </li>
+                    <li>
+                        15 available
+                    </li>
+                </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            10:00-12:00 AM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            8:00-10:00 AM
+                        </li>
+                        <li>
+                            23 spots
+                        </li>
+                        <li>
+                            5 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            12:00-2:00 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            3 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            11:00-1:00 PM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            12 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="tr">Barre</td>
+                <td class="tr">Pilates</td>
+                <td class="tr">Yoga</td>
+                <td class="tr">Spinning</td>
+                <td class="tr">Zumba</td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            11:30-1:30 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            8 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            12:30-2:30 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            10:30-12:30 AM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            2:30-4:30 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            3 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            1:30-3:30 PM
+                        </li>
+                        <li>
+                            35 spots
+                        </li>
+                        <li>
+                            12 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+           
+            <tr>
+                <td class="tr">Crossfit</td>
+                <td class="tr">Yoga</td>
+                <td class="tr">Barre</td>
+                <td class="tr">Zumba</td>
+                <td class="tr">Pilates</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            2:00-4:00 PM
+                        </li>
+                        <li>
+                            23 spots
+                        </li>
+                        <li>
+                            4 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            3:00-5:00 PM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            1:00-3:00 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            3 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            5:00-7:00 PM
+                        </li>
+                        <li>
+                            35 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            2:00-4:00 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            2 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <table class="schedule mobile-schedule">
+            <th colspan="3">
+                Monday
+            </th>
+            <tr>
+                <td class="tr">
+                    Zumba
+                </td>
+                <td class="tr">
+                    Barre
+                </td>
+                <td class="tr">
+                    Crossfit
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            9:00-11:00 AM
+                        </li>
+                        <li>
+                            35 spots
+                        </li>
+                        <li>
+                            15 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            11:30-1:30 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            8 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            2:00-4:00 PM
+                        </li>
+                        <li>
+                            23 spots
+                        </li>
+                        <li>
+                            4 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <th colspan="3">
+                Tuesday
+            </th>
+            <tr>
+                <td class="tr">
+                    Spinning
+                </td>
+                <td class="tr">
+                    Pilates
+                </td>
+                <td class="tr">
+                    Yoga
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            10:00-12:00 AM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            12:30-2:30 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            3:00-5:00 PM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <th colspan="3">
+                Wednesday
+            </th>
+            <tr>
+                <td class="tr">
+                    Crossfit
+                </td>
+                <td class="tr">
+                    Yoga
+                </td>
+                <td class="tr">
+                    Barre
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            8:00-10:00 AM
+                        </li>
+                        <li>
+                            23 spots
+                        </li>
+                        <li>
+                            5 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            10:30-12:30 AM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            1:00-3:00 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            6 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <th colspan="3">
+                Thursday
+            </th>
+            <tr>
+                <td class="tr">
+                    Barre
+                </td>
+                <td class="tr">
+                    Spinning
+                </td>
+                <td class="tr">
+                    Zumba
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            1:00-2:00 PM
+                        </li>
+                        <li>
+                            15 spots
+                        </li>
+                        <li>
+                            3 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Mihail-Gabriel
+                        </li>
+                        <li>
+                            2:30-4:30 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            3 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            5:00-7:00 PM
+                        </li>
+                        <li>
+                            35 spots
+                        </li>
+                        <li>
+                            10 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <th colspan="3">
+                Friday
+            </th>
+            <tr>
+                <td class="tr">
+                    Yoga
+                </td>
+                <td class="tr">
+                    Zumba
+                </td>
+                <td class="tr">
+                    Pilates
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Hadi Abdallah
+                        </li>
+                        <li>
+                            11:00-1:00 PM
+                        </li>
+                        <li>
+                            30 spots
+                        </li>
+                        <li>
+                            12 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Satish Gurung
+                        </li>
+                        <li>
+                            1:30-3:30 PM
+                        </li>
+                        <li>
+                            35 spots
+                        </li>
+                        <li>
+                            12 available
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="schedule-data mr-0">
+                        <li>
+                            Bogdan-Florin
+                        </li>
+                        <li>
+                            2:00-4:00 PM
+                        </li>
+                        <li>
+                            20 spots
+                        </li>
+                        <li>
+                            2 available
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="container-fluid">
+        <div class="row footer pt-3 pt-md-5 pb-3">
+            <div class="col-12 pl-md-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>About VIAFIT</p>
+                        <p>
+                            We are a fitness center that aims to deliver the best
+                            experience for<br> our customers. Every piece of equipment
+                            is fully sterilized and cleaned<br> after each day by our staff.
+                            If you have any complaints you <br>
+                            can find us at <b>1-800-VIA-GYM.</b>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                        <div class="col-md-4 mt-2">
+                            <p>Info</p>
+                            <ul class="footer-list mb-3">
+                                <li>
+                                    <a href="#" class="legal_a">Privacy policy</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Terms of use</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Sales and refunds</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Language</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <p>Complaints</p>
+                            <ul class="footer-list mb-3">
+                                <li>
+                                    <a href="#" class="legal_a">Dirty equipment</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">I had an accident</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Mean staff</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Support</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <p>Trainer social links</p>
+                            <ul class="footer-list mb-3">
+                                <li>
+                                    <a href="#" class="legal_a">Satish Gurung</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Hadi Abdallah</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Mihail Constantin Gabriel</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="legal_a">Bogdan-Florin Cîrstoiu</a>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-hr mt-md-5 mb-md-5 bg-dark">
+            <div class="col-md-12 footer-box d-flex justify-content-center align-items-center flex-column">
+                <p>Want to become a member? Find us at: <b>Chr M Østergaards Vej 4, 8700 Horsens, Denmark.</b></p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4477.004615461052!2d9.88214797002208!3d55.87130092171239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c63be87e17d19%3A0xa65113d28ba174ba!2sVIA%20University%20Campus%20Horsens!5e0!3m2!1sen!2sro!4v1586435269886!5m2!1sen!2sro" width="700" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <hr class="footer-hr mt-md-5 mb-4 bg-dark">
+            <div class="col-md-12 d-flex justify-content-center align-items-center">
+                <div class="col-sm-3 d-flex justify-content-between">
+                    <img title="Facebook" src="../images/facebook.svg" width="40" height="40">
+                    <img title="Instagram" src="../images/instagram.svg" width="40" height="40">
+                    <img title="Twitter" src="../images/twitter.svg" width="40" height="40">
+                    <img title="Work with us" src="../images/agreement.svg" width="40" height="40">
+                </div>
+            </div>
+            <hr class="footer-hr mt-4 mb-3 bg-dark">
+            <div class="col-md-12 d-flex justify-content-center align-items-center mt-2">
+                Copyright&copy; 2020. All rights reserved.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

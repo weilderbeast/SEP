@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- CSS stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../icons/favicon-32x32.png" />
+
+    <!-- Title -->
+    <title>VIAFit</title>
+</head>
+
+<body>
+    <div class="search-overlay collapsed-mine d-flex justify-content-center align-content-center align-items-center flex-column">
+        <div class="search-bar">
+            <form class="form-inline mx-auto">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <img src="../icons/search.svg" width="30" height="30">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Search VIAFIT...">
+                </div>
+            </form>
+        </div>
+        <div class="circle mt-4" id="search-close">
+            <img src="../icons/x.svg">
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="p-3 nav-box">
+            <a class="navbar-brand" href="../../index.html">
+                <img src="../images/logo.jpg" width="50" height="50" class="logo-main">
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon d-flex align-content-center flex-wrap mr-0">
+                    <span class="line top-bar"></span>
+                    <span class="line middle-bar"></span>
+                    <span class="line bottom-bar"></span>
+                </span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navigation">
+            <form class="form-inline mx-auto">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <img src="../icons/search.svg" width="30" height="30">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Search VIAFIT...">
+                </div>
+            </form>
+            <hr>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="schedule.html">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="discover.html">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="dropdown-menu">
+                        More 
+                    </button>
+                    <div class="dropdown-box">
+                        <ul class="dropdown-list">
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="nutrition.html">Nutrition</a>
+                            </li>
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="membership.html">Membership</a>
+                            </li>
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="playlist.html">Music</a>
+                            </li>
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="trainers.html">Trainers</a>
+                            </li>
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="membership.html">Classes</a>
+                            </li>
+                            <li class="dropdown-item m-0 py-3">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+        <div class="search pr-4">
+            <a id="search-open">
+                <img src="../icons/search.svg" class="search-icon">
+            </a>
+        </div>
+    </nav>
+    <div class="container-fluid m-0 class-background mt-5 mb-3 d-flex justify-content-center align-items-center flex-column">
+        <p>Check our classes</p>
+        <p class="class-title-small">This is where the fun begins.</p>
+    </div>
+    <div class="container-fluid m-0 p-0 mb-3">
+        <div class="class-banner p-5 d-flex justify-content-center align-items-center flex-column">
+            <p class="class-text">Welcome to VIAFIT</p>
+            <p class="class-text-small">Join us on a journey towards a healthy way of living.</p>
+            <div class="px-5 w-50 pt-3" id="class-welcome">
+            <p> 
+                Choose between different types of training, according to your needs and posibilities.
+                Sign up for one class, or all of them. It is completely your choice.
+            </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid m-0 p-0 class-banner-mid mb-3 d-flex justify-content-center align-items-center">
+        <p>Push yourself to the limits.</p>
+    </div>
+    <div class="container-fluid class-banner m-0 p-5 mb-3">
+        <div class="mt">
+        <p class="class-text"><b>Sweat & Burn</b></p>
+        <div class="d-flex my-5 justify-content-center align-items-center flex-row flex-wrap">
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="crossfit">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Crossfit</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">50 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="pulse-strength">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Pulse Strength</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">64 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="tighten-up">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Tighten Up</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">112 Centers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="mt">
+        <p class="class-text"><b>Body & Mind</b></p>
+        <div class="d-flex my-5 justify-content-center align-items-center flex-row flex-wrap">
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="yoga">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Yoga</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">34 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="pilates">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Pilates</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">57 Centers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="mt">
+        <p class="class-text"><b>Speed & Sprint</b></p>
+        <div class="d-flex my-5 justify-content-center align-items-center flex-row flex-wrap">
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="spinning">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Spinning 25</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">28 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="spinning2">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Spinning Classic</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">34 Centers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="mt">
+        <p class="class-text"><b>Move & Dance</b></p>
+        <div class="d-flex my-5 justify-content-center align-items-center flex-row flex-wrap">
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="zumba">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Zumba</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">78 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="step">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Step</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">49 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="barre">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Barre</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">98 Centers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="mt">
+        <p class="class-text"><b>Power & Performance</b></p>
+        <div class="d-flex my-5 justify-content-center align-items-center flex-row flex-wrap">
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="boxing">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Boxing</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">75 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="power-cross">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>Power Cross</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">68 Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="class-card mx-3">
+                <div class="class-card-top" id="TRX">
+                    <div class="card-overlay px-3 d-flex justify-content-between align-items-end">
+                        <p>Read more</p>
+                        <p>-></p>
+                    </div>
+                </div>
+                <div class="class-card-bottom">
+                    <p>TRX</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="sign-up-button px-4 py-2">Sign-up</button>
+                        <p class="m-0 p-0">39 Centers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid mb-3">
+        <div class="row">
+            <div class="col-12 class-banner-mid d-flex justify-content-center align-items-center flex-column" id="class-banner-bottom">
+                <p>Book a meeting</p>
+                <button class="sign-up-button px-4 py-2">Sign-up</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0 m-0">
+        <div class="row footer">
+            <div class="footer-top col-12">
+                <div class="row">
+                    <div class="col-10 mx-lg-auto p-0">
+                        <div class="row d-flex flex-row align-items-center pr-0 pl-0 pt-5 pb-5">
+                            <div class="col-lg-4 d-flex flex-row align-items-center footer-label">
+                                <div class="circle rounded-circle d-flex justify-content-center align-items-center m-4">
+                                    <img src="../icons/phone.ico">
+                                </div>
+                                <p class="p-0 m-0">
+                                    +1-800-VIAFIT
+                                </p>
+                            </div>
+                            <div class="col-lg-4 d-flex flex-row align-items-center">
+                                <div class="circle rounded-circle d-flex justify-content-center align-items-center m-4">
+                                    <img src="../icons/mail.svg">
+                                </div>
+                                <p class="p-0 m-0">
+                                    support@viafit.dk
+                                </p>
+                            </div>
+                            <div class="col-lg-4 d-flex flex-row align-items-center pr-0">
+                                <div class="circle rounded-circle d-flex justify-content-center align-items-center m-4">
+                                    <img src="../icons/location.ico">
+                                </div>
+                                <p class="p-0 m-0">
+                                    Chr M Østergaards 4<br>
+                                    8700 Horsens
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-main col-12">
+                <div class="row">
+                    <div class="col-12 col-lg-10 mx-md-auto">
+                        <div class="row p-5">
+                            <div class="col-xl-4 p-0">
+                                <img src="../icons/logo.png">
+                                <p class="pt-5">
+                                    VIAFit provides a unique environment with professional trainers who will push your training to the max, and provide amazing results. Don't hesitate to call us for any questions or send us an email.
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-xl-2 p-0 pl-xl-5 pt-5 pt-xl-2">
+                                <h4>Links</h4>
+                                <ul class="mt-5">
+                                    <li>
+                                        <a href="#">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Classes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-xl-2 p-0 pt-5 pt-xl-2">
+                                <h4>Support</h4>
+                                <ul class="mt-5">
+                                    <li>
+                                        <a href="#">My subscription</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Membership</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Schedule</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xl-4 p-0 pt-5 pt-xl-2">
+                                <h4>
+                                    Tips & Guides
+                                </h4>
+                                <p class="mt-5 m-0">Physical fitness may help prevent depression or anxiety</p>
+                                <ul class="media-list">
+                                    <li> 3 min read </li>
+                                    <li class="pl-3"> | </li>
+                                    <li class="pl-3"> 20 comments</li>
+                                </ul>
+                                <p class="mt-2 m-0">Fitness: The best exercise to lose belly fat and tone up...</p>
+                                <ul class="media-list">
+                                    <li> 9 min read </li>
+                                    <li class="pl-3"> | </li>
+                                    <li class="pl-3"> 64 comments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom col-12 d-flex flex-column justify-content-center align-items-center">
+                <hr>
+                <p class="p-0 pt-3 pb-3">Copyright &copy;2020. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <button id="back-to-top">
+        <a href="#top">
+            <img src="../icons/arrow.svg" class="back-to-top">
+        </a>
+    </button>
+    <script src="../js/script.js" type="text/javascript"></script>
+</body>
+
+</html>
