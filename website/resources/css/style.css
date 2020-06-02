@@ -90,7 +90,7 @@ a:hover {
     nav-bar styling 
 */
 nav {
-    background: rgba(8, 8, 8, 1);
+    background: #171717;
     font-family: 'Poppins', sans-serif;
     padding: 0 !important;
 }
@@ -2097,63 +2097,56 @@ input[type=text]:focus {
 }
 
 
-/* class schedule */
-.schedule {
-    color: white;
-    font-family: 'Oswald', sans-serif;
-}
-
-.in-schedule {
-    height: 90vh;
-    text-align: center;
-    background-image: url("../images/schedule.jpg");
+/* schedule page */
+.schedule-header{
+    height: 80vh;
+    width:100vw;
+    background-image: url(../images/schedule.jpg);
     background-size: cover;
+    background-position: center;
+    text-align: center;
+    color:white;
 }
-
-.mobile-schedule {
-    display: none;
+.schedule-title{
+    font-size: 100px;
+    font-weight: bold;
 }
-
-.schedule th {
+.schedule-title-small{
     font-size: 40px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: black;
-    margin: 5px;
+}
+.schedule-list{
+    background-color: #e0e0e0;
+}
+.schedule-list p{
+    margin-bottom: 0;
+    padding-left:10px;
+    padding-right: 10px;
+}
+.schedule-list-item{
+    background-color: #b5b5b5;
+    color:#171717;
+    width:80vw;
+    margin-bottom: 10px;
+    transition: none;
+}
+.schedule-list-item p{
+    transition: none !important;
+}
+.schedule-list-item:hover{
+    background-color: #171717;
+    color:white;
+}
+.schedule-list-item-left{
+    width:30%;
+}
+.schedule-list-item-right{
+    width:70%;
+}
+.schedule-list-header{
+    background-color: #171717;
+    color:lightskyblue !important;
 }
 
-.schedule-data {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    background-color: black;
-    border-left-color: lightskyblue;
-    border-left-width: 2px;
-    border-left-style: solid;
-    margin: 5px;
-    margin-left: 0;
-}
-
-.schedule-data:hover {
-    background-color: white;
-    color: black;
-    border-left-color: orangered;
-    font-weight: bolder;
-    transition-duration: .2s;
-    transition-timing-function: ease-in-out;
-}
-
-
-.tr {
-    color: lightskyblue;
-    background-color: black;
-    transition-duration: .2s;
-    transition-timing-function: ease-in-out;
-    padding: 10px;
-    font-size: 20px;
-}
 
 
 
@@ -2170,7 +2163,6 @@ input[type=text]:focus {
     margin: 0;
     padding: 0;
     text-align: center;
-    
     font-family: 'Poppins', sans-serif;
     color: white;
 }

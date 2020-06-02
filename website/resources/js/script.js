@@ -110,3 +110,5 @@ $(".close-x").on("click",function(){
     })
 })
 
+
+
