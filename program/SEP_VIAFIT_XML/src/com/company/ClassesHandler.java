@@ -4,13 +4,33 @@ import java.util.ArrayList;
 import javax.swing.text.TabExpander;
 import java.util.Scanner;
 
+/**
+ * A class that handles all of the gym classes necessities
+ * @author Constantin Mihail
+ * @version 1.0.0
+ */
 public class ClassesHandler implements Serializable
 {
   private FileManager fileManager;
 
+  /**
+   * No argument constructor that initializes the file manager
+   */
   public ClassesHandler() { fileManager = new FileManager(); }
+  /**
+   * A method which adds a new class to the file
+   * @param gymClass the class that needs to be added
+   */
   public void addClass(GymClass gymClass) { fileManager.saveClass(gymClass); }
 
+  /**
+   * A method that returns a class with given name, date and time, by first
+   * getting the whole list and checking for each class
+   * @param name the name of the class
+   * @param date the date of the class
+   * @param time the starting time of the class
+   * @return the respective gym class after the search has been done
+   */
   public GymClass getClassByName(String name,Date date,Time time)
   {
     ArrayList<GymClass> classesArrayList = getAllFromFile();
@@ -32,35 +52,11 @@ public class ClassesHandler implements Serializable
     }
     return null;
   }
-  public boolean checkDateAndTime(Date date,Time time,int index)
-  {
-    ArrayList<GymClass> allClasses = getAllFromFile();
-    for(int i=0;i<allClasses.size();i++)
-    {
-      if(i != index)
-        if(allClasses.get(i).getDate().equals(date) &&
-              allClasses.get(i).getTime().equals(time))
-        {
-          return false;
-        }
-    }
-    return true;
-  }
-  public GymClass searchByDateAndTimeAndName(Date date,Time time,String name)
-  {
-    ArrayList<GymClass> allClasses = getAllFromFile();
-    for(int i=0;i<allClasses.size();i++)
-    {
-        if(allClasses.get(i).getDate().equals(date) &&
-            allClasses.get(i).getTime().equals(time) &&
-            allClasses.get(i).getName().equals(name)
-        )
-        {
-          return allClasses.get(i);
-        }
-    }
-    return null;
-  }
+  /**
+   * A method that checks if the added information is not already in the list
+   * @param gymClass the gym class that contains the information which needs to be checked
+   * @return a boolean that is true if the class information exists and false if it does not
+   */
   public boolean checkForAdding(GymClass gymClass)
   {
     ArrayList<GymClass> allClasses = getAllFromFile();
@@ -78,27 +74,21 @@ public class ClassesHandler implements Serializable
     }
       return true;
   }
-  public boolean checkForEditing(GymClass gymClass,int index)
-  {
-    ArrayList<GymClass> allClasses = getAllFromFile();
-    return true;
-  }
+  /**
+   * A method that removes a gym class from the list
+   * @param gymClass the gym class that needs to be removed
+   */
   public void removeClass(GymClass gymClass)
   {
-    fileManager.removeClasses(gymClass);
+    fileManager.removeClass(gymClass);
   }
+  /**
+   * A method that gets all the classes from a file
+   * @return an array list with all of the classes
+   */
   public ArrayList<GymClass> getAllFromFile()
   {
     return fileManager.getAllClasses();
-  }
-  public int getIndexOf(GymClass gymClass)
-  {
-    ArrayList<GymClass> allClasses = getAllFromFile();
-    for(int i=0;i<allClasses.size();i++)
-    {
-      if(allClasses.get(i).equals(gymClass)) return i;
-    }
-    return -1;
   }
 }
 

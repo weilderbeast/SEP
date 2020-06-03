@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><VIAFIT><schedule><class><name>test</name><time>2:1:0</time><endTime>3:2:0</endTime><instructor/><numberOfMembers>2</numberOfMembers><spots>12</spots><avSpots>10</avSpots><date>14/5/2020</date></class></schedule></VIAFIT>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><VIAFIT><schedule><class><name>test</name><time>12:10:0</time><endTime>15:25:0</endTime><instructor>test</instructor><numberOfMembers>0</numberOfMembers><spots>12</spots><avSpots>12</avSpots><date>14/6/2020</date></class></schedule></VIAFIT>

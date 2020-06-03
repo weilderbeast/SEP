@@ -1,21 +1,29 @@
 package com.company;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import java.io.FileNotFoundException;
-import java.rmi.activation.ActivationID;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
+/**
+ * The main Controller class for the GUI, this chonky boi has so many lines, dang.
+ * @author Cirstoiu Bogdan-Florin
+ * @version 1.7
+ *
+ */
 
 public class JavaFXGUIController
 {
+  /**
+   * All of the declared fx id's needed for the layout, i tried grouping them together,
+   * but since there's so many of them and i went through a bunch of iterations,
+   * some of them are out of place (this is version 1.7).
+   */
   //Main layout
   @FXML private AnchorPane homePane;
   @FXML private AnchorPane classesPane;
@@ -25,6 +33,14 @@ public class JavaFXGUIController
   @FXML private Button classesButton;
   @FXML private Button membersButton;
   @FXML private Button instructorsButton;
+
+
+  @FXML private TextField currentDate;
+  @FXML private TextField currentInstructors;
+  @FXML private TextField currentClasses;
+  @FXML private TextField currentMembers;
+  @FXML private TextField currentTime;
+
 
   //Instructor panes, buttons, text fields and list views
   @FXML private AnchorPane editInstructorPane;
@@ -165,16 +181,36 @@ public class JavaFXGUIController
   @FXML private TextField classSearchTimeHour;
   @FXML private TextField classSearchTimeMinute;
 
-  Instructor placeHolderInstructor;
-  Member placeHolderMember;
-  GymClass placeHolderClass;
+  @FXML private Button removeAllInstructors;
 
+  /**
+   * @author Cirstoiu Bogdan-Florin
+   * The method were all actions regarding a member take place. This includes
+   * adding, editing, and removing members. It also handles the layout part of it.
+   * The code is further documented using comments.
+   */
 
+  /**This variable holds the data of a member when it's either being added, edited,
+   * or searched for
+   */
   Member memberSource;
   public void membersHandle(ActionEvent e){
 
-    //member handler, contains all the methods needed to write to and from the file
+    /**
+     * Member handler, contains all the methods needed to write to and from the file,
+     * for more info see the MemberHandler.java class
+     */
     MemberHandler memberHandler = new MemberHandler();
+
+    /**
+     * If statement that checks for input to switch to the "allMembersPane" pane.
+     * It works by first switching the layout to the desired pane, hiding the other
+     * ones, and then getting the list ready for input by clearing it, after which
+     * the program checks if there is anything to read from the file to avoid errors,
+     * when finally, if there's something to read, the items are added to the list, otherwise,
+     * nothing happens.
+     * @param viewMembers button
+     */
     if(e.getSource() == viewMembers)
     {
       //switching layout
@@ -187,7 +223,7 @@ public class JavaFXGUIController
 
       //trying to update the list if there are members
       //if not, do nothing, avoids "EOf" exception
-      ArrayList<Member> allMembers = new ArrayList<>();
+      ArrayList<Member> allMembers;
       if(memberHandler.getAllMembersFromFile() != null)
       {
         //get all members from the file
@@ -202,11 +238,22 @@ public class JavaFXGUIController
         System.out.println("member list empty. did not update.");
       }
     }
-    //the refresh button, has the exact same functionality as the code above
+    /**
+     * The refresh button, used to refresh the allMembersList list,
+     * in the allMembersPane.
+     * It works by first clearing the list of any data, and then checking if there's anything
+     * in the file, to avoid errors, after which, if there's any data in there, it will be
+     * displayed in the list, otherwise, nothing will happen.
+     * @param refreshAllMembersList
+     */
     if(e.getSource() == refreshAllMembersList)
     {
+      //clearing the list
       allMembersList.getItems().clear();
-      ArrayList<Member> allMembers = new ArrayList<>();
+
+      //checking if there is anything to read from the file before trying to update
+      //the list, avoids "EOf" exception and "NullPointer" exception
+      ArrayList<Member> allMembers;
       if(memberHandler.getAllMembersFromFile() != null)
       {
         allMembers = memberHandler.getAllMembersFromFile();
@@ -220,7 +267,10 @@ public class JavaFXGUIController
       }
     }
 
-    //switching layout to the register member pane
+    /**
+     * If statement used for switching layout to the register member pane.
+     * It works by first making the pane visible, and hiding the other ones.
+     */
     if(e.getSource() == registerMember)
     {
       registerMembersPane.setVisible(true);
@@ -230,7 +280,21 @@ public class JavaFXGUIController
       basic.setSelected(true);
     }
 
-    //logic for adding a member to the list
+    /**
+     * If statement used for adding a member to the list.
+     * Although long, it contains basically everything needed within one statement.
+     * It first checks for the type of subscription, either premium or basic.
+     * It then checks to see if any of the input fields are null. If so, an alert window
+     * will appear, notifying the user.
+     * If none of the fields are null, a temporary user is being created, and then used to
+     * check for conflicts using the ".checkForAdding()" method of the "memberHandler" variable.
+     * For more information about that see the MemberHandler.java class.
+     * If the inputted data already exists in the system, the program alerts the user with an alert window,
+     * after which he is prompted to try again.
+     * If the inputted data does not conflict with any existing data, the member is added to the system,
+     * and the user is notified that the operation completed successfully.
+     * Then the layout is changed to the main member pane, where the user can see that the member has been added.
+     */
     if(e.getSource() == registerMemberButton)
     {
       //boolean to get the type of subscription
@@ -257,7 +321,7 @@ public class JavaFXGUIController
             memberPhoneNumber.getText(),
             hasPremium);
 
-        //checking the temp new member for conflicts in the file
+        //checking the temp member for conflicts in the file with other members
         if(memberHandler.checkForAdding(memberSource))
         {
           //succeeded, passed all checks, it is added to the file
@@ -303,6 +367,11 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * If statement used for switching the layout to the "editMembersPane" pane
+     * by hiding the previous panes and displaying the correct one.
+     * @param searchMembers button.
+     */
     //switching layout to search members pane
     if(e.getSource() == searchMembers)
     {
@@ -315,6 +384,10 @@ public class JavaFXGUIController
       searchMemberByNamePane.setVisible(false);
     }
 
+    /**
+     * If statement used to switch the layout to the "searchMemberByNamePane" pane.
+     * @param searchMemberByName button
+     */
     //switching layout to the search by name pane
     if(e.getSource() == searchMemberByName)
     {
@@ -324,6 +397,10 @@ public class JavaFXGUIController
       memberSearchResultPane.setVisible(false);
     }
 
+    /**
+     * If statement used to switch the layout to the "searchMemberByPhoneNumberPane" pane.
+     * @param searchMemberByPhone button
+     */
     //switching layout to the search by phone number pane
     if(e.getSource() == searchMemberByPhone)
     {
@@ -333,6 +410,15 @@ public class JavaFXGUIController
       editSelectedMemberPane.setVisible(false);
     }
 
+    /**
+     * If statement used to search a member by name.
+     * It works by first creating a temp member with the data provided by the user,
+     * and at the same time, checking if the data matches any existing data in the system.
+     * If so, the layout is then changed to the search result pane, and the searched member is
+     * displayed on a list.
+     * If not, an alert window will appear to notify the user that no member was found.
+     * @param searchMemberByNameButton button
+     */
     //logic for searching by name
     if(e.getSource() == searchMemberByNameButton)
     {
@@ -363,6 +449,14 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * If statement used to search a member by phone number.
+     * The same logic applies here, although, the temp member is used to search for
+     * a phone number amongst all the members in the system, after which, the same steps are applied.
+     * If one was found, the layout is changed to the search result pane, and the searched member is
+     * displayed on a list, and if no member was found, the user is alerted.
+     * @param searchMemberByPhoneButton button
+     */
     //logic for searching by phone number
     if(e.getSource() == searchMemberByPhoneButton)
     {
@@ -393,6 +487,10 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * If statement used to switch to the "editSelectedMemberPane" pane.
+     * @param editMember button
+     */
     //switching layout to the edit member layout
     if(e.getSource() == editMember)
     {
@@ -409,6 +507,20 @@ public class JavaFXGUIController
       newPremium.setSelected(false);
     }
 
+    /**
+     * Logic for editing a member.
+     * It works by first checking the type of subscription of the member,
+     * after which the program gets the index of the member we want to edit.
+     * This is needed because, when checking for conflicts within the .bin file,
+     * we want to skip the position of our member, otherwise, you'd have to change
+     * all of the fields for it to save.
+     * We first check if the input fields aren't null, if they are, we alert the user,
+     * if not, we create a temp member that we use to check for conflicting data with
+     * existing members. If the data is conflicting, the user is alerted and the fields are reset.
+     * If not, the old member is removed from the system, and the "new" edited version of it will take it's place,
+     * and the user is alerted that the operation has been completed successfully.
+     * @param saveMember button
+     */
     //logic for editing a member
     if(e.getSource() == saveMember)
     {
@@ -486,163 +598,24 @@ public class JavaFXGUIController
       }
     }
 
-    //switching to the add member to class pane
-    //not working
-    /*
-    if(e.getSource() == bookMemberToClass)
-    {
-      addMemberToClassPane.setVisible(true);
-      registerMembersPane.setVisible(false);
-
-      //getting all classes for displaying in the list when adding
-      addMemberToClassList.getItems().clear();
-      ClassesHandler classesHandler = new ClassesHandler();
-      ArrayList<GymClass> allClasses = classesHandler.getAllFromFile();
-      if(!(allClasses.isEmpty()))
-        for(int i=0;i<allClasses.size();i++)
-        {
-          addMemberToClassList.getItems().add(allClasses.get(i));
-        }
-      else{
-        //console log for debugging
-        System.out.println("classes list empty. did not update.");
-
-        //should add alert that list is empty, and that there's no class to book to, and send you back
-      }
-    }
+    /**
+     * Logic for removing a member. First we warn the user that this action
+     * cannot be undone, after which, if the user chooses to continue,
+     * the member is removed from the system, and the layout is changed back to
+     * the allMembersPane pane.
+     * @param removeMember button
      */
-
-    //not properly working
-    /*
-    if(e.getSource() == addMemberToClass)
-    {
-      //class handler
-      ClassesHandler classesHandler = new ClassesHandler();
-
-      //checking subscription type
-      boolean hasPremium=false;
-      if(newPremium.isSelected()) hasPremium=true;
-
-      memberSource = new Member(
-          memberName.getText(),
-          memberLastName.getText(),
-          memberAddress.getText(),
-          memberEmail.getText(),
-          memberPhoneNumber.getText(),
-          hasPremium);
-      //problem : the classList is not updating
-      //solution : ? no fucking idea
-      //the constructor makes the list void, and then you have to update it
-      //why is it still blank?
-      //also the class spots don't go down when you book a member // you need to re-write the class in the file
-      LocalDate localDate = memberClassDate.getValue();
-      Date neededDate = new Date(localDate.getDayOfMonth(),localDate.getMonthValue(),localDate.getYear());
-      Time time = new Time(Integer.parseInt(memberClassStartHour.getText()),Integer.parseInt(memberClassStartMinute.getText()));
-      if(
-          memberClassName.getText() != null &&
-              memberClassDate.getValue() != null &&
-              memberClassStartHour.getText() != null &&
-              memberClassStartMinute.getText() != null
-      )
-      {
-        GymClass temp = classesHandler.getClassByName(memberClassName.getText(),neededDate,time);
-        if(temp != null
-            && temp.getAvailableSpots()>0)
-        {
-          int index = classesHandler.getIndexOf(temp);
-          memberSource.bookTo(temp);
-          temp.removeOneSpot();
-          System.out.println("index: "+ index);
-          classesHandler.addClass(temp,index);
-          System.out.println("booked "+memberName.getText()+" to the class "+temp.getName());
-          addMemberToClassPane.setVisible(false);
-          registerMembersPane.setVisible(true);
-          mainMembersPane.setVisible(true);
-        }
-        else{
-          System.out.println("did not find specified class");
-        }
-      }
-      else{
-        System.out.println("some fields are empty");
-      }
-    }
-     */
-    /*
-    if(e.getSource() == editBookings)
-    {
-      editBookingsPane.setVisible(true);
-      editSelectedMemberPane.setVisible(false);
-      allBookingsList.getItems().clear();
-      ArrayList<GymClass> currentBookings;
-      if(!(memberSource.getBookings().isEmpty()))
-      {
-        currentBookings = memberSource.getBookings();
-        System.out.println("got to here");
-        System.out.println("current bookings: "+currentBookings);
-        for(int i=0;i<currentBookings.size();i++)
-        {
-          allBookingsList.getItems().add(currentBookings.get(i));
-        }
-      }
-      else{
-        System.out.println("no current bookings, did not update list");
-      }
-    }
-    */
-    /*
-    if(e.getSource() == removeBooking)
-    {
-      editCurrentBookingsPane.setVisible(true);
-      editBookingsPane.setVisible(false);
-    }
-    */
-    /*
-    if(e.getSource() == removeSelectedBooking)
-    {
-      if(
-          removeBookingDate.getValue() != null &&
-          removeBookingName.getText() != null &&
-          removeBookingStartHour.getText() != null  &&
-          removeBookingStartMinute.getText() != null
-      )
-      {
-        ArrayList<GymClass> currentBookings = new ArrayList<>();
-        //currentBookings = memberSource.getBookings();
-
-        LocalDate localDate = removeBookingDate.getValue();
-        Date neededDate = new Date(localDate.getDayOfMonth(),localDate.getMonthValue(),localDate.getYear());
-        Time time = new Time(Integer.parseInt(removeBookingStartHour.getText()),Integer.parseInt(removeBookingStartMinute.getText()));
-
-        for(int i=0;i<currentBookings.size();i++)
-        {
-          if(currentBookings.get(i).getName().equals(removeBookingName.getText()) &&
-              currentBookings.get(i).getDate().equals(neededDate) &&
-                currentBookings.get(i).equals(time))
-          {
-            currentBookings.remove(i);
-            //memberSource.updateBookings(currentBookings);
-            currentBookingsList.getItems().remove(currentBookings.get(i));
-            currentBookingsList.refresh();
-            System.out.println("removed booking");
-            removeBookingName.clear();
-            removeBookingStartHour.clear();
-            removeBookingStartMinute.clear();
-          }
-        }
-      }
-      else{
-        System.out.println("some fields are empty");
-      }
-    }*/
-
+    //logic for removing a member
     if(e.getSource() == removeMember)
     {
+      //first alerting the user that this operation cannot be undone
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("Warning");
       alert.setHeaderText("Are you sure you want to remove the selected member?");
       alert.setContentText("This cannot be undone.");
 
+      //if the user chooses yes, we remove the member and switch the layout back
+      //to the allMembers pane, if not, the alert closes and nothing happens.
       Optional<ButtonType> result = alert.showAndWait();
       if (result.get() == ButtonType.OK){
         memberHandler.removeMember(memberSource);
@@ -660,18 +633,35 @@ public class JavaFXGUIController
       }
     }
 
-    }
+  }
 
 
 
-
-
-
-
+  /**
+   * @param classSource , a variable that stores all the info of the current class operation,
+   * such as adding a new class, removing, or editing an existing class.
+   */
   GymClass classSource;
+
+  /**
+   * @author Cirstoiu Bogdan-Florin
+   * Method used for all operations regarding classes,
+   * such as adding, removing, or editing classes in the system, but also used
+   * for switching the layout in the classes section.
+   * @param e the event listener
+   */
   public void classesHandle(ActionEvent e){
+    /**
+     * class handler, that contains all methods needed for operations using classes
+     */
+    //class handler used throughout the method
     ClassesHandler classesHandler = new ClassesHandler();
 
+    /**
+     * The export button, that, when clicked, exports the schedule to an external xml file,
+     * by using the componentHandler class. For more information, check the ComponentHandling.java class.
+     */
+    //the export button, used to export the xml file for the schedule.
     if(e.getSource() == export)
     {
       ComponentHandling componentHandler = new ComponentHandling();
@@ -683,101 +673,27 @@ public class JavaFXGUIController
       }
     }
 
-    /*
-    if(e.getSource() == addInstructorToClass)
-    {
-      addInstructorToClassPane.setVisible(true);
-      createClassPane.setVisible(false);
-
-      InstructorHandler instructorHandler = new InstructorHandler();
-      ArrayList<Instructor> allInstructorsList;
-      if(instructorHandler.getAllFromFile() != null)
-      {
-        allInstructorsList = instructorHandler.getAllFromFile();
-        allAvailableInstructors.getItems().clear();
-        for(int i=0;i<allInstructorsList.size();i++)
-        {
-          allAvailableInstructors.getItems().add(allInstructorsList.get(i));
-        }
-      }
-      else{
-        System.out.println("no instructors currently");
-      }
-    }
-    if(e.getSource() == saveInstructorToClass)
-    {
-      InstructorHandler instructorHandler = new InstructorHandler();
-      Instructor instructor = instructorHandler.getInstructorByName(addInstructorToClassName.getText(),addInstructorToClassLastName.getText());
-      if(instructor != null)
-      {
-        //creating prerequisites for the new class
-        LocalDate localDate = classDate.getValue();
-        Date neededDate = new Date(localDate.getDayOfMonth(),localDate.getMonthValue(),localDate.getYear());
-        Time time = new Time(Integer.parseInt(classStartHour.getText()),Integer.parseInt(classStartMinute.getText()));
-        Time endTime = new Time(Integer.parseInt(classEndHour.getText()),Integer.parseInt(classEndMinute.getText()));
-
-        classSource = new GymClass(
-            className.getText(),time,endTime,neededDate,Integer.parseInt(classSpots.getText()),Integer.parseInt(classAvailableSpots.getText())
-        );
-        //checking for conflicting data
-        if(classesHandler.checkForAdding(classSource))
-        {
-          //adding the data to the file
-          classesHandler.addClass(classSource);
-          //console confirmation
-          System.out.println("Added class "+classSource.getName()+" with the instructor "+instructor);
-
-          //clearing all the fields so they're ready the next time you want to use them
-          className.clear();
-          classStartHour.clear();
-          classStartMinute.clear();
-          classEndHour.clear();
-          classEndMinute.clear();
-          classSpots.clear();
-          classAvailableSpots.clear();
-
-          //switching the panes to the viewAllClasses pane
-          createClassPane.setVisible(false);
-          addInstructorToClassPane.setVisible(false);
-          viewAllClassesPane.setVisible(true);
-
-          //clearing the list so it's ready for the update
-          allClassesList.getItems().clear();
-
-          //updating the listView to display the new data
-          ArrayList<GymClass> classesList = classesHandler.getAllFromFile();
-          for(int i=0;i<classesList.size();i++)
-          {
-            allClassesList.getItems().add(classesList.get(i));
-          }
-
-          //little console confirmation message
-          System.out.println("Showing all classes done");
-        }
-        else
-        {
-          //alerting if the data is conflicting
-          Alert alert = new Alert(Alert.AlertType.WARNING);
-          alert.setTitle("Warning");
-          alert.setContentText("There is already a class at that time and date.");
-          alert.setHeaderText("Please try again.");
-          alert.showAndWait();
-        }
-
-      }
-    }*/
-
+    /**
+     * If statement used to switch the layout to the classes section, while also
+     * refreshing the list with all the classes.
+     */
     if(e.getSource() == classesButton)
     {
+      //switching the layout
       classesPane.setVisible(true);
       classesMain.setVisible(true);
       viewAllClassesPane.setVisible(true);
       classesMainSearch.setVisible(false);
       createClassPane.setVisible(false);
       membersPane.setVisible(false);
+      homePane.setVisible(false);
 
+      //refreshing the list with all the classes
+
+      //clearing
       allClassesList.getItems().clear();
       ArrayList<GymClass> allClasses;
+      //checking for data in the file to avoid "EOf" and "NullPointer" exceptions
       if(classesHandler.getAllFromFile() != null)
       {
         allClasses = classesHandler.getAllFromFile();
@@ -790,23 +706,42 @@ public class JavaFXGUIController
       else{
         System.out.println("No classes to show");
       }
-
     }
+
+    /**
+     * If statement used to switch the layout to the main classes pane, while also
+     * refreshing the list that contains all the classes
+     */
+    //switching the layout to see all classes, while also refreshing the list with all classes
     if(e.getSource() == viewAllClasses)
     {
+      //switching layout
       viewAllClassesPane.setVisible(true);
       createClassPane.setVisible(false);
       classesMainSearch.setVisible(false);
 
+      //clearing the list
       allClassesList.getItems().clear();
-      ArrayList<GymClass> classesList = classesHandler.getAllFromFile();
-      for(int i=0;i<classesList.size();i++)
-      {
-        allClassesList.getItems().add(classesList.get(i));
-      }
-      System.out.println("Showing all classes done");
+      ArrayList<GymClass> allClasses;
 
+      //checking for data in the file to avoid "EOf" and "NullPointer" exceptions
+      if(classesHandler.getAllFromFile() != null)
+      {
+        allClasses = classesHandler.getAllFromFile();
+        for(int i=0;i<allClasses.size();i++)
+        {
+          allClassesList.getItems().add(allClasses.get(i));
+        }
+        System.out.println("Showing all classes done");
+      }
+      else{
+        System.out.println("No classes to show");
+      }
     }
+
+    /**
+     * Switching the layout to the main search pane for classes
+     */
     if(e.getSource() == editClass)
     {
       classesMainSearch.setVisible(true);
@@ -818,6 +753,10 @@ public class JavaFXGUIController
       viewAllClassesPane.setVisible(false);
       classesSearchResultPane.setVisible(false);
     }
+
+    /**
+     * Switching the layout to the create pane for classes
+     */
     if(e.getSource() == createClass)
     {
       createClassPane.setVisible(true);
@@ -832,6 +771,14 @@ public class JavaFXGUIController
       classSpots.clear();
       classAvailableSpots.clear();
     }
+
+    /**
+     * Logic for creating and adding a new class to the system.
+     * First, the program checks all input fields so none of them are empty, and if they are,
+     * the user is prompted to try again and complete all of them, otherwise, if all of them have been completed,
+     * the program creates a new temp class, that is used to check for conflicts against existing data, and if none are found,
+     * the class is added to the system, otherwise, the user is prompted with an alert that the added class already exists.
+     */
     if(e.getSource() == saveClass)
     {
       //checking that all fields are completed
@@ -914,23 +861,41 @@ public class JavaFXGUIController
         alert.showAndWait();
       }
     }
+
+    /**
+     * Switching the layout to the search by name pane for classes
+     */
     if(e.getSource() == searchClassesByName)
     {
       searchClassesByNamePane.setVisible(true);
       classesSearchResultPane.setVisible(false);
       editClassPane.setVisible(false);
     }
+    /**
+     * Logic for searching a class by name, date and time.
+     * First, we create a new class, that we use to search through the class list, and if we get a result,
+     * the result is then displayed on the search result pane, where the user can interact with it, otherwise,
+     * an alert is prompted to the user that shows no class has been found.
+     */
     if(e.getSource() == searchClassesByNameButton)
     {
+      //creating prerequisites for the search, using the text fields the user has to fill
       LocalDate localDate = classDate1.getValue();
       Date neededDate = new Date(localDate.getDayOfMonth(),localDate.getMonthValue(),localDate.getYear());
       Time time = new Time(Integer.parseInt(classSearchTimeHour.getText()),Integer.parseInt(classSearchTimeMinute.getText()));
+
+      //if we get a result, we then display it on another pane, in a list, where the user can interact with it
       if(classesHandler.getClassByName(className1.getText(),neededDate,time) != null)
       {
+        //adding the result to the list
         classSource = classesHandler.getClassByName(className1.getText(),neededDate,time);
         classSearchResult.getItems().clear();
         classSearchResult.getItems().add(classSource);
+
+        //system print for debugging
         System.out.println("Search result: "+classSource.getName());
+
+        //switching the layout
         searchClassesByNamePane.setVisible(false);
         classesSearchResultPane.setVisible(true);
         className1.clear();
@@ -939,6 +904,7 @@ public class JavaFXGUIController
         classDate1.setValue(null);
       }
       else{
+        //alert for the user in case no class has been found
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning");
         alert.setContentText("No class was found.");
@@ -948,6 +914,9 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * Switching the layout to the editClassPane
+     */
     if(e.getSource() == editClassButton)
     {
       editClassPane.setVisible(true);
@@ -956,6 +925,16 @@ public class JavaFXGUIController
       classEditResult.getItems().clear();
       classEditResult.getItems().add(classSource);
     }
+
+    /**
+     * Logic for editing a class.
+     * First, we check that the input fields aren't empty, if they are, we prompt the user to fill all of them.
+     * If the fields are not empty, we first create a new class using the data the user has provided, and then
+     * use that class to check for conflicts, mainly if that same class exists already, and if so, we prompt the user
+     * that the class already exists, and he has to try again.
+     * If there is no conflicting data, the class is added to the system, the user is prompted that the operation has been completed
+     * successfully, and the layout is switched to the main classes pane, where all classes are shown.
+     */
     if(e.getSource() == saveChangesClass)
     {
       //check the fields aren't null
@@ -970,10 +949,6 @@ public class JavaFXGUIController
           newClassInstructor.getText() != null
       )
       {
-        //getting the index of the class we want to edit
-        //so we can skip it when checking for conflicting data
-        int index = classesHandler.getIndexOf(classSource);
-
         //creating prerequisites for the new class
         LocalDate localDate = newClassDate.getValue();
         Date neededDate = new Date(localDate.getDayOfMonth(),localDate.getMonthValue(),localDate.getYear());
@@ -1050,13 +1025,19 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * Logic for removing a class from the system
+     */
     if(e.getSource() == removeCLassButton)
     {
+      //alert for the user that this operation cannot be undone
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
       alert.setTitle("Warning");
       alert.setHeaderText("Are you sure you want to remove the selected class?");
       alert.setContentText("This cannot be undone.");
 
+      //if the user chooses yes, the class is removed and the layout is switched back to the
+      //main page for classes where they're all displayed
       Optional<ButtonType> result = alert.showAndWait();
       if (result.get() == ButtonType.OK){
         classesHandler.removeClass(classSource);
@@ -1069,30 +1050,36 @@ public class JavaFXGUIController
           allClassesList.getItems().add(allClasses.get(i));
         }
       } else {
+        //if the user chooses no, nothing happens
         alert.close();
       }
     }
 
   }
 
-
-
-  //this holds the info when an instructor is searched for, safer option, minimizes the possibility of errors
+  /**
+   * Variable used to create a new instructor each time one is needed, such as when
+   * we add, edit, remove, or search for one.
+   */
   Instructor source;
 
-
-
-  @FXML private AnchorPane InstructorToClassPane;
-  @FXML private TextField instructorToClassName;
-  @FXML private TextField instructorToClassStartHour;
-  @FXML private TextField instructorToClassStartMinute;
-  @FXML private DatePicker instructorToClassDate;
-  @FXML private ListView allAvailableClasses;
+  /**
+   * @author Cirstoiu Bogdan-Florin
+   * Main method used for interacting with instructors, whether that means adding, editing, removing, or
+   * searching for one, also used to navigate the layout in the instructors section.
+   * @param e
+   */
   public void instructorHandle(ActionEvent e)
   {
+    /**
+     * Instructor handler, used throughout the method, that contains all methods necessary
+     */
     //initializing the handler for the instructors
     InstructorHandler instructorHandler = new InstructorHandler();
 
+    /**
+     * Logic for the refresh button on the viewAllInstructors pane
+     */
     if(e.getSource() == refreshList)
     {
       //checking if the list has stuff in it so we avoid a null pointer exception
@@ -1111,6 +1098,22 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * Logic for the removeAllInstructors button, which, you guessed it, removes all instructors
+     */
+    if(e.getSource() == removeAllInstructors)
+    {
+      instructorHandler.removeAllInstructors();
+    }
+
+    /**
+     * Logic for adding an instructor to the system.
+     * We first check if all the input fields have been completed, if not, the user is prompted to fill all of them
+     * before continuing, and if all of them have been completed, a temp instructor is created, that is used to
+     * check for conflicts with existing data. If there are any, the user is prompted to try again by an alert.
+     * If not, then the instructor is added to the list, the layout is changed to the main instructors pane,
+     * where all instructors are displayed
+     */
     if(e.getSource() == addInstructor)
     {
       //checking all fields so none is blank
@@ -1159,24 +1162,40 @@ public class JavaFXGUIController
       }
     }
 
+    /**
+     * Logic for searching an instructor by name.
+     * We first check if that instructor exists in the system, using the instructor handler. For more
+     * information about that check the InstructorHandler.java class.
+     * If the instructor exists, the layout is switched to the search result pane, where the result of the
+     * search is displayed, and the user can continue to interact with it
+     */
     if(e.getSource() == searchInstructorByNameButton)
     {
+      //checking if the instructor exists
       if(instructorHandler.getInstructorByName(searchInstructorName.getText(),searchInstructorLastName.getText()) != null)
       {
+        //adding it to the list
         source = instructorHandler.getInstructorByName(searchInstructorName.getText(),searchInstructorLastName.getText());
         searchResultList.getItems().add("Name: "+source.getFullName());
         searchResultList.getItems().add("Email: "+source.getEmail());
         searchResultList.getItems().add("Phone number: "+source.getPhoneNumber());
         searchResultList.getItems().add("Address: "+source.getAddress());
+
+        //clearing the fields for the next time they'll be used
         searchInstructorName.clear();
         searchInstructorLastName.clear();
+
+        //switching the layout to the search result page
         searchInstructorByNamePane.setVisible(false);
         searchInstructorByPhoneNumberPane.setVisible(false);
         searchResult.setVisible(true);
         editSelectedInstructor.setVisible(false);
+
+        //console log used for debugging
         System.out.println("Search result: "+source.getFullName());
       }
       else{
+        //alert if no instructor has been found
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning");
         alert.setContentText("No instructor was found.");
@@ -1186,23 +1205,37 @@ public class JavaFXGUIController
         searchInstructorLastName.clear();
       }
     }
+
+    /**
+     * Logic for searching an instructor by phone number.
+     * Using the instructor handler, we check if the data inputted by the user corresponds with any instructor
+     * in the system, and if so, it is then showed in the search result pane, where the user can continue
+     * to interact with it
+     */
     if(e.getSource() == SearchInstructorByPhoneNumberButton)
     {
+      //check to see if the instructor exists
       if(instructorHandler.getInstructorByPhoneNumber(searchInstructorPhoneNumber.getText()) != null)
       {
+        //add it to the display list
         source = instructorHandler.getInstructorByPhoneNumber(searchInstructorPhoneNumber.getText());
         searchResultList.getItems().add("Name: "+source.getFullName());
         searchResultList.getItems().add("Email: "+source.getEmail());
         searchResultList.getItems().add("Phone number: "+source.getPhoneNumber());
         searchResultList.getItems().add("Address: "+source.getAddress());
         searchInstructorPhoneNumber.clear();
+
+        //switching the layout
         searchInstructorByNamePane.setVisible(false);
         searchInstructorByPhoneNumberPane.setVisible(false);
         searchResult.setVisible(true);
-        System.out.println("Search result: "+source.getFullName());
         editSelectedInstructor.setVisible(false);
+
+        //console log for debugging
+        System.out.println("Search result: "+source.getFullName());
       }
       else{
+        //alert if no instructor has been found
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Warning");
         alert.setContentText("No instructor was found.");
@@ -1211,6 +1244,12 @@ public class JavaFXGUIController
         searchInstructorPhoneNumber.clear();
       }
     }
+
+    /**
+     * Logic for removing an instructor.
+     * First, the user is prompted to choose if he/she wants to continue and notified that the operation
+     * cannot be undone, and if he/she chooses to continue, the instructor is then removed, otherwise nothing happens.
+     */
     if(e.getSource() == removeInstructorButton)
     {
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -1233,6 +1272,11 @@ public class JavaFXGUIController
         alert.close();
       }
     }
+
+    /**
+     * Logic for switching to the edit instructor pane,
+     * also adding the instructor to a list so that all information is available while editing
+     */
     if(e.getSource() == editInstructorButton)
     {
       editSelectedInstructor.setVisible(true);
@@ -1242,6 +1286,20 @@ public class JavaFXGUIController
       currentInstructorData.getItems().add("Phone number: "+source.getPhoneNumber());
       currentInstructorData.getItems().add("Address: "+source.getAddress());
     }
+    /**
+     * Logic for editing an instructor.
+     * The method works by first getting the index of the instructor, that will then be used
+     * when checking for conflicts.
+     * The method then checks all fields so that none are empty when the user tries to edit the instructor,
+     * and if either one of them is empty, the user is prompted by an alert that he needs to complete everything before
+     * continuing. If everything is completed, then the program creates a temp instructor using the information provided,
+     * and uses it to check for conflicts. The reason we also need the index of the instructor we're editing, is because we have to
+     * skip him when comparing, otherwise, you would have to edit all of his information for the changes to save.
+     * If there's conflicting information with another instructor, the user is prompted to try again, otherwise, the changes are saved,
+     * the old instructor is removed, and the new one takes place.
+     * (at first i wanted to be able to edit only one field at a time if the user chose to, and then just edit the information inside
+     * the instructor, but that would add unnecessary complexity to the program).
+     */
     if(e.getSource() == saveChangesInstructor)
     {
       //getting the index of the instructor we want to edit (aka the one we searched for)
@@ -1320,18 +1378,68 @@ public class JavaFXGUIController
 
   }
 
+  /**
+   * This method is used to handle only the main buttons on the left-side nav, while also
+   * having some code to run. For example, when you click the classes button, the layout switches to the main classes pane,
+   * and at the same time, refresh the list so that the user can see the whole list whenever he wants.
+   * @param e
+   */
   public void handleClickMe(ActionEvent e)
   {
+    /**
+     * Logic for the home page, where we show the date and time, and also the number of classes, members and instructors
+     * The date, time, and number of classes, members and instructors was done by Satish Gurung
+     */
     if(e.getSource() == homeButton)
     {
+      //switching the layout
       homePane.setVisible(true);
-
       classesPane.setVisible(false);
       membersPane.setVisible(false);
       instructorsPane.setVisible(false);
+
+      //dateTimeFormatter, self explanatory
+      DateTimeFormatter Date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+      DateTimeFormatter Time = DateTimeFormatter.ofPattern("hh:mm a");
+      LocalDateTime now = LocalDateTime.now();
+
+      //adding the date
+      currentDate.setAlignment(Pos.BASELINE_CENTER);
+      currentDate.setText(Date.format(now));
+
+      //adding the time
+      currentTime.setAlignment(Pos.BASELINE_CENTER);
+      currentTime.setText(Time.format(now));
+
+      //number of classes
+      ClassesHandler classesHandler=new ClassesHandler();
+      currentClasses.setAlignment(Pos.BASELINE_CENTER);
+      if(classesHandler.getAllFromFile() != null)
+        currentClasses.setText(String.valueOf(classesHandler.getAllFromFile().size()));
+      else { currentClasses.setText("0");}
+
+      //number of members
+      MemberHandler memberHandler=new MemberHandler();
+      currentMembers.setAlignment(Pos.BASELINE_CENTER);
+      if(memberHandler.getAllMembersFromFile() != null)
+        currentMembers.setText(String.valueOf(memberHandler.getAllMembersFromFile().size()));
+      else { currentMembers.setText("0");}
+
+      //number of instructors
+      InstructorHandler instructorHandler=new InstructorHandler();
+      currentInstructors.setAlignment(Pos.BASELINE_CENTER);
+      if(instructorHandler.getAllFromFile() != null)
+        currentInstructors.setText(String.valueOf(instructorHandler.getAllFromFile().size()));
+      else{ currentInstructors.setText("0");}
+
     }
+    /**
+     * Logic for the member button, which switches the layout to the main member pane,
+     * and also refreshes the list to display all members
+     */
     if(e.getSource() ==  membersButton)
     {
+      //switching the layout
       membersPane.setVisible(true);
       mainMembersPane.setVisible(true);
       allMembersPane.setVisible(true);
@@ -1341,6 +1449,7 @@ public class JavaFXGUIController
       registerMembersPane.setVisible(false);
       editMembersPane.setVisible(false);
 
+      //refreshing the list
       MemberHandler memberHandler = new MemberHandler();
       allMembersList.getItems().clear();
       ArrayList<Member> allMembers = memberHandler.getAllMembersFromFile();
@@ -1353,26 +1462,42 @@ public class JavaFXGUIController
         System.out.println("member list empty. did not update.");
       }
     }
+
+    /**
+     * Logic for the instructor button, that swtiches the layout to the main instructor pane,
+     * and also refreshes the list so that all instructors are visible to the user upon clicking the button
+     */
     if(e.getSource() == instructorsButton)
     {
+      //switching the layout
       instructorsPane.setVisible(true);
       instructorsMain.setVisible(true);
       allInstructorsPane.setVisible(true);
-
-      InstructorHandler instructorHandler = new InstructorHandler();
-      ArrayList<Instructor> allInstructors = instructorHandler.getAllFromFile();
-      for(int i=0;i<allInstructors.size();i++)
-      {
-        fullInstructorList.getItems().add(allInstructors.get(i));
-      }
-      System.out.println("Refreshing list complete");
-
+      editInstructorPane.setVisible(false);
+      registerInstructorPane.setVisible(false);
       classesPane.setVisible(false);
       membersPane.setVisible(false);
       homePane.setVisible(false);
+
+      //refreshing the list
+      fullInstructorList.getItems().clear();
+      InstructorHandler instructorHandler = new InstructorHandler();
+      if(instructorHandler.getAllFromFile() != null)
+      {
+        ArrayList<Instructor> allInstructors = instructorHandler.getAllFromFile();
+        for(int i=0;i<allInstructors.size();i++)
+        {
+          fullInstructorList.getItems().add(allInstructors.get(i));
+        }
+        System.out.println("Refreshing list complete");
+      }
+      else{
+        System.out.println("list empty, did not update");
+      }
     }
 
 
+    //this shouldn't be here
     if(e.getSource() == editInstructor)
     {
       editInstructorPane.setVisible(true);
@@ -1426,18 +1551,52 @@ public class JavaFXGUIController
       currentInstructorData.getItems().clear();
     }
   }
+
+  /**
+   * Initialize function used to set up the program upon start, just switching the layout
+   * to the main page, and doing the same thing as before, adding the date, time, and number of
+   * members, classes and instructors for the user to see upon start-up
+   */
   public void initialize()
   {
+    //switching the layout
     homePane.setVisible(true);
     membersPane.setVisible(false);
     instructorsPane.setVisible(false);
     classesPane.setVisible(false);
 
-    //
-    searchResult.setVisible(false);
-    allInstructorsPane.setVisible(false);
-    instructorsMain.setVisible(false);
-    registerInstructorPane.setVisible(false);
-    editInstructorPane.setVisible(false);
+    //dateTimeFormatter, self explanatory
+    DateTimeFormatter Date = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    DateTimeFormatter Time = DateTimeFormatter.ofPattern("hh:mm a");
+    LocalDateTime now = LocalDateTime.now();
+
+    //adding the date
+    currentDate.setAlignment(Pos.BASELINE_CENTER);
+    currentDate.setText(Date.format(now));
+
+    //adding the time
+    currentTime.setAlignment(Pos.BASELINE_CENTER);
+    currentTime.setText(Time.format(now));
+
+    //number of classes
+    ClassesHandler classesHandler=new ClassesHandler();
+    currentClasses.setAlignment(Pos.BASELINE_CENTER);
+    if(classesHandler.getAllFromFile() != null)
+    currentClasses.setText(String.valueOf(classesHandler.getAllFromFile().size()));
+    else { currentClasses.setText("0");}
+
+    //number of members
+    MemberHandler memberHandler=new MemberHandler();
+    currentMembers.setAlignment(Pos.BASELINE_CENTER);
+    if(memberHandler.getAllMembersFromFile() != null)
+    currentMembers.setText(String.valueOf(memberHandler.getAllMembersFromFile().size()));
+    else { currentMembers.setText("0");}
+
+    //number of instructors
+    InstructorHandler instructorHandler=new InstructorHandler();
+    currentInstructors.setAlignment(Pos.BASELINE_CENTER);
+    if(instructorHandler.getAllFromFile() != null)
+    currentInstructors.setText(String.valueOf(instructorHandler.getAllFromFile().size()));
+    else{ currentInstructors.setText("0");}
   }
 }

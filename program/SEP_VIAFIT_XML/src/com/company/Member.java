@@ -1,55 +1,36 @@
 package com.company;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
+/**
+ * Member class used for creating a new member
+ * @author Satish Gurung
+ * @version 1.0
+ */
 public class Member extends Person implements Serializable
 {
   private boolean subscription;
-  //private ArrayList<GymClass> classesList;
+
+  /**
+   * 6 argument constructor for creating a new member
+   * @param firstName
+   * @param lastName
+   * @param address
+   * @param email
+   * @param phoneNumber
+   * @param hasPremium
+   */
   public Member(String firstName , String lastName , String address , String email , String phoneNumber, boolean hasPremium)
   {
     super(firstName , lastName , address , email , phoneNumber);
     this.subscription = hasPremium;
-    //classesList = new ArrayList<>();
   }
 
-  public boolean getSubscription()
-  {
-    return subscription;
-  }
-
-  public Member copy()
-  {
-    return new Member(this.getFirstName(),this.getLastName(),this.getAddress(),this.getEmail(),this.getPhoneNumber(),this.getSubscription());
-  }
-
-  public void bookTo(GymClass gymClass)
-  {
-    //classesList.add(gymClass);
-  }
-  public void removeBooking(GymClass gymClass)
-  {
-    //classesList.remove(gymClass);
-  }
-  public void changeSubscriptionTo(boolean value)
-  {
-    this.subscription=value;
-  }
-
-  /*
-  public ArrayList<GymClass> getBookings()
-  {
-   return this.classesList;
-  }
-  */
-  /*
-  public void updateBookings(ArrayList<GymClass> updatedBookings)
-  {
-  classesList = updatedBookings;
-  }
-  */
-
+  /**
+   * Equals method used to compare the member with another object
+   * @param obj
+   * @return true if they are the same, false if not
+   */
   public boolean equals(Object obj)
   {
     if(!(obj instanceof Member))
@@ -64,6 +45,10 @@ public class Member extends Person implements Serializable
             this.getPhoneNumber().equals(member.getPhoneNumber());
   }
 
+  /**
+   * ToString method used to display the member's data
+   * @return the member's data
+   */
   public String toString()
   {
     if(subscription)

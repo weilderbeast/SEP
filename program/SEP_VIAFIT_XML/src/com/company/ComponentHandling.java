@@ -17,6 +17,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+/**
+ * Class used for exporting an xml file.
+ * @author Cirstoiu Bogdan-Florin
+ * @version 1.0
+ */
 public class ComponentHandling
 {
   private static final String filePath = "src\\com\\company\\xmltest.xml";
@@ -26,7 +31,9 @@ public class ComponentHandling
   private Element schedule;
   private Element root;
 
-  //initializing the handler
+  /**
+   * No argument constructor, that initializes the Builder class for the xml file
+   */
   public ComponentHandling()
   {
     //initializing prerequisites
@@ -52,46 +59,11 @@ public class ComponentHandling
     root.appendChild(schedule);
   }
 
-  //adding a class to the list
-  public void createClassElement(String id,String name,String time,String endTime,String instructor,String numberOfMembers,String spots,String avSpots,String date)
-  {
-    //creating the class element
-    Element gymClass = document.createElement("class");
-    gymClass.setAttribute("id",id);
-
-    //creating the elements for the class
-    Element className = document.createElement("name");
-    Element classTime = document.createElement("time");
-    Element classTimeEnd = document.createElement("endTime");
-    Element classInstructor = document.createElement("instructor");
-    Element classMemberNumber = document.createElement("numberOfMembers");
-    Element classSpots = document.createElement("spots");
-    Element classAvSpots = document.createElement("avSpots");
-    Element classDate = document.createElement("date");
-
-    //adding the values to the elements
-    className.setTextContent(name);
-    classTime.setTextContent(time);
-    classTimeEnd.setTextContent(endTime);
-    classInstructor.setTextContent(instructor);
-    classMemberNumber.setTextContent(numberOfMembers);
-    classSpots.setTextContent(spots);
-    classAvSpots.setTextContent(avSpots);
-    classDate.setTextContent(date);
-
-    //appending all the elements to the class element
-    gymClass.appendChild(className);
-    gymClass.appendChild(classTime);
-    gymClass.appendChild(classTimeEnd);
-    gymClass.appendChild(classInstructor);
-    gymClass.appendChild(classMemberNumber);
-    gymClass.appendChild(classSpots);
-    gymClass.appendChild(classAvSpots);
-    gymClass.appendChild(classDate);
-
-    //add the element to the schedule
-    schedule.appendChild(gymClass);
-  }
+  /**
+   * Method used to add a class to the xml file that creates all necessary elements for the xml syntax,
+   * after which they are appended to their respective class
+   * @param class_gym
+   */
   public void createClassElement(GymClass class_gym)
   {
     //creating the class element
@@ -111,8 +83,7 @@ public class ComponentHandling
     className.setTextContent(class_gym.getName());
     classTime.setTextContent(class_gym.getTimeString());
     classTimeEnd.setTextContent(class_gym.getEndTimeString());
-    //no instructor for now
-    //classInstructor.setTextContent(class_gym.getInstructor());
+    classInstructor.setTextContent(class_gym.getInstructor());
     classMemberNumber.setTextContent(class_gym.getCurrentSpotsString());
     classSpots.setTextContent(class_gym.getSpotsString());
     classAvSpots.setTextContent(class_gym.getAvailableSpotsString());
@@ -132,7 +103,9 @@ public class ComponentHandling
     schedule.appendChild(gymClass);
   }
 
-  //finalizer that puts the dom in the file
+  /**
+   * Method used to add all the data to the file
+   */
   public void Finalizer()
   {
     //create the xml file

@@ -13,20 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.JavaFXGUIController">
    <children>
-      <AnchorPane prefHeight="100.0" prefWidth="1050.0" styleClass="top-main" stylesheets="@css.css">
-         <children>
-            <Label layoutX="112.0" layoutY="28.0" styleClass="title" stylesheets="@css.css" text="VIAFIT's Management System" textFill="WHITE">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="100.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="200.0" styleClass="main-left" stylesheets="@css.css">
          <children>
             <Button fx:id="homeButton" layoutY="43.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Home" textFill="WHITE">
@@ -51,176 +37,52 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="homePane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="home" stylesheets="@css.css" />
-      <AnchorPane fx:id="instructorsPane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="instructors" stylesheets="@css.css">
+      <AnchorPane prefHeight="100.0" prefWidth="1050.0" styleClass="top-main" stylesheets="@css.css">
          <children>
-            <AnchorPane fx:id="allInstructorsPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
-               <children>
-                  <ListView fx:id="fullInstructorList" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="626.0" />
-                  <Button fx:id="removeAllInstructors" layoutX="14.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove All" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="refreshList" layoutX="14.0" layoutY="296.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Refresh" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="registerInstructorPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
-               <children>
-                  <Label layoutX="107.0" layoutY="90.0" text="First name:" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="107.0" layoutY="144.0" text="Last name:" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="107.0" layoutY="197.0" text="Phone number:" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="107.0" layoutY="245.0" text="Email:" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="107.0" layoutY="294.0" text="Address:" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="instructorNameField" layoutX="315.0" layoutY="96.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                  <TextField fx:id="instructorLastNameField" layoutX="315.0" layoutY="150.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                  <TextField fx:id="instructorPhNrField" layoutX="315.0" layoutY="203.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                  <TextField fx:id="instructorEmailField" layoutX="315.0" layoutY="251.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                  <TextField fx:id="instructorAddressField" layoutX="315.0" layoutY="300.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                  <Button fx:id="addInstructor" layoutX="220.0" layoutY="351.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Add instructor" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="instructorsMain" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra" stylesheets="@css.css">
-               <children>
-                  <Button fx:id="editInstructor" layoutY="43.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Search" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="registerInstructor" layoutY="120.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Register" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="allInstructors" layoutY="197.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="View" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="editInstructorPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
-               <children>
-                  <AnchorPane fx:id="searchInstructorByNamePane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <Label layoutX="26.0" layoutY="161.0" text="First name:" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="26.0" layoutY="214.0" text="Last name:" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="searchInstructorName" layoutX="183.0" layoutY="166.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                        <TextField fx:id="searchInstructorLastName" layoutX="183.0" layoutY="220.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
-                        <Button fx:id="searchInstructorByNameButton" layoutX="164.0" layoutY="280.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Search" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="searchInstructorByPhoneNumberPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <Button fx:id="SearchInstructorByPhoneNumberButton" layoutX="147.0" layoutY="250.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Search" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <TextField fx:id="searchInstructorPhoneNumber" layoutX="225.0" layoutY="187.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="180.0" />
-                        <Label layoutX="23.0" layoutY="181.0" text="Phone number:" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="searchResult" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <ListView fx:id="searchResultList" layoutX="34.0" layoutY="32.0" prefHeight="157.0" prefWidth="370.0" />
-                        <Button fx:id="editInstructorButton" layoutX="34.0" layoutY="241.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Edit" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="removeInstructorButton" layoutX="34.0" layoutY="319.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="editSelectedInstructor" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <ListView fx:id="currentInstructorData" layoutX="25.0" layoutY="42.0" prefHeight="126.0" prefWidth="400.0" />
-                        <TextField fx:id="newName" layoutX="276.0" layoutY="197.0" onAction="#instructorHandle" />
-                        <TextField fx:id="newLastName" layoutX="276.0" layoutY="234.0" onAction="#instructorHandle" />
-                        <TextField fx:id="newEmail" layoutX="276.0" layoutY="274.0" onAction="#instructorHandle" />
-                        <TextField fx:id="newPhNumber" layoutX="276.0" layoutY="311.0" onAction="#instructorHandle" />
-                        <TextField fx:id="newAddress" layoutX="276.0" layoutY="348.0" onAction="#instructorHandle" />
-                        <Label layoutX="46.0" layoutY="201.0" text="New name:" />
-                        <Label layoutX="46.0" layoutY="238.0" text="New last name:" />
-                        <Label layoutX="46.0" layoutY="278.0" text="New email:" />
-                        <Label layoutX="46.0" layoutY="315.0" text="New phone number:" />
-                        <Label layoutX="46.0" layoutY="352.0" text="New address:" />
-                        <Button fx:id="saveChangesInstructor" layoutX="138.0" layoutY="401.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="62.0" prefWidth="149.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="searchInstructorBy" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra-2" stylesheets="@css.css">
-                     <children>
-                        <Button fx:id="searchInstructorByName" layoutY="120.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Name" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="searchInstructorByPhoneNumber" layoutY="197.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Phone" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <Label layoutX="37.0" layoutY="59.0" text="Search by" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <Label layoutX="112.0" layoutY="28.0" styleClass="title" stylesheets="@css.css" text="VIAFIT's Management System" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="100.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="homePane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="home" stylesheets="@css.css">
+         <children>
+            <Label layoutX="643.0" layoutY="126.0" text="Current date" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="126.0" text="Current intructors" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="218.0" text="Current members" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="64.0" layoutY="313.0" text="Current classes" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="currentTime" editable="false" layoutX="646.0" layoutY="254.0" onAction="#handleClickMe" />
+            <TextField fx:id="currentInstructors" editable="false" layoutX="83.0" layoutY="159.0" onAction="#handleClickMe" />
+            <TextField fx:id="currentMembers" editable="false" layoutX="83.0" layoutY="254.0" onAction="#handleClickMe" />
+            <TextField fx:id="currentClasses" editable="false" layoutX="83.0" layoutY="349.0" onAction="#handleClickMe" />
+            <TextField fx:id="currentDate" editable="false" layoutX="646.0" layoutY="159.0" onAction="#handleClickMe" />
+            <Label layoutX="644.0" layoutY="218.0" text="Current time" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <AnchorPane fx:id="membersPane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="classes" stylesheets="@css.css">
          <children>
@@ -306,27 +168,42 @@
             </AnchorPane>
             <AnchorPane fx:id="editMembersPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
                <children>
+                  <AnchorPane fx:id="memberSearchResultPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <ListView fx:id="memberSearchResultList" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="422.0" />
+                        <Button fx:id="editMember" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="70.0" prefWidth="153.0" styleClass="main-button" stylesheets="@css.css" text="Edit" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeMember" layoutX="14.0" layoutY="317.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="70.0" prefWidth="153.0" styleClass="main-button" stylesheets="@css.css" text="Remove" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="editSelectedMemberPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
                      <children>
                         <ListView fx:id="memberEditList" layoutX="14.0" layoutY="14.0" prefHeight="184.0" prefWidth="422.0" />
-                        <Label layoutX="14.0" layoutY="220.0" text="New name:" />
-                        <Label layoutX="14.0" layoutY="250.0" text="New last name:" />
-                        <Label layoutX="14.0" layoutY="280.0" text="New email:" />
-                        <Label layoutX="15.0" layoutY="311.0" text="New phone number:" />
-                        <Label layoutX="15.0" layoutY="340.0" text="New address:" />
+                        <Label layoutX="14.0" layoutY="220.0" text="New name:" textFill="WHITE" />
+                        <Label layoutX="14.0" layoutY="250.0" text="New last name:" textFill="WHITE" />
+                        <Label layoutX="14.0" layoutY="280.0" text="New email:" textFill="WHITE" />
+                        <Label layoutX="15.0" layoutY="311.0" text="New phone number:" textFill="WHITE" />
+                        <Label layoutX="15.0" layoutY="340.0" text="New address:" textFill="WHITE" />
                         <TextField fx:id="newMemberName" layoutX="281.0" layoutY="216.0" onAction="#membersHandle" />
                         <TextField fx:id="newMemberLastName" layoutX="281.0" layoutY="246.0" onAction="#membersHandle" />
                         <TextField fx:id="newMemberEmail" layoutX="281.0" layoutY="276.0" onAction="#membersHandle" />
                         <TextField fx:id="newMemberPhoneNumber" layoutX="281.0" layoutY="307.0" onAction="#membersHandle" />
-                        <TextField fx:id="newMemberAddress" layoutX="281.0" layoutY="336.0" onAction="#membersHandle" />
+                        <TextField fx:id="newMemberAddress" layoutX="281.0" layoutY="338.0" onAction="#membersHandle" />
                         <Button fx:id="saveMember" layoutX="146.0" layoutY="416.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="70.0" prefWidth="121.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Label layoutX="15.0" layoutY="367.0" text="New subscription:" />
-                        <RadioButton fx:id="newPremium" layoutX="281.0" layoutY="367.0" mnemonicParsing="false" onAction="#membersHandle" text="Premium" />
-                        <RadioButton fx:id="newBasic" layoutX="388.0" layoutY="367.0" mnemonicParsing="false" onAction="#membersHandle" text="Basic" />
+                        <Label layoutX="15.0" layoutY="367.0" text="New subscription:" textFill="WHITE" />
+                        <RadioButton fx:id="newPremium" layoutX="281.0" layoutY="369.0" mnemonicParsing="false" onAction="#membersHandle" text="Premium" textFill="WHITE" />
+                        <RadioButton fx:id="newBasic" layoutX="388.0" layoutY="369.0" mnemonicParsing="false" onAction="#membersHandle" text="Basic" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="searchMemberByNamePane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
@@ -365,21 +242,6 @@
                         <TextField fx:id="memberSearchPhoneNumber" layoutX="235.0" layoutY="171.0" onAction="#membersHandle" prefHeight="25.0" prefWidth="189.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="memberSearchResultPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <ListView fx:id="memberSearchResultList" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="422.0" />
-                        <Button fx:id="editMember" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="70.0" prefWidth="153.0" styleClass="main-button" stylesheets="@css.css" text="Edit" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="removeMember" layoutX="14.0" layoutY="317.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="70.0" prefWidth="153.0" styleClass="main-button" stylesheets="@css.css" text="Remove" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
                   <AnchorPane fx:id="searchMembersPane" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra-2" stylesheets="@css.css">
                      <children>
                         <Button fx:id="searchMemberByPhone" layoutY="196.0" mnemonicParsing="false" onAction="#membersHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Phone" textFill="WHITE">
@@ -404,15 +266,24 @@
          </children></AnchorPane>
       <AnchorPane fx:id="classesPane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="members" stylesheets="@css.css">
          <children>
-            <AnchorPane fx:id="viewAllClassesPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
+            <AnchorPane fx:id="classesMain" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra" stylesheets="@css.css">
                <children>
-                  <ListView fx:id="allClassesList" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="626.0" />
-                  <Button fx:id="refreshClasses" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Refresh" textFill="WHITE">
+                  <Button fx:id="viewAllClasses" layoutY="43.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="View" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="removeAllClasses" layoutX="238.0" layoutY="348.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove all" textFill="WHITE">
+                  <Button fx:id="editClass" layoutY="119.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Search" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="createClass" layoutY="195.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Create" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="export" layoutY="272.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Export" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -434,8 +305,8 @@
                   <TextField fx:id="className" layoutX="325.0" layoutY="66.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="270.0" />
                   <TextField fx:id="classStartHour" layoutX="325.0" layoutY="142.0" prefHeight="25.0" prefWidth="58.0" />
                   <TextField fx:id="classStartMinute" layoutX="403.0" layoutY="142.0" prefHeight="25.0" prefWidth="58.0" />
-                  <TextField fx:id="classSpots" layoutX="327.0" layoutY="210.0" prefHeight="25.0" prefWidth="58.0" />
-                  <TextField fx:id="classAvailableSpots" layoutX="327.0" layoutY="244.0" prefHeight="25.0" prefWidth="58.0" />
+                  <TextField fx:id="classSpots" layoutX="325.0" layoutY="211.0" prefHeight="25.0" prefWidth="58.0" />
+                  <TextField fx:id="classAvailableSpots" layoutX="325.0" layoutY="245.0" prefHeight="25.0" prefWidth="58.0" />
                   <DatePicker fx:id="classDate" layoutX="325.0" layoutY="107.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="270.0" />
                   <Button fx:id="saveClass" layoutX="251.0" layoutY="386.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="70.0" prefWidth="136.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
                      <font>
@@ -462,7 +333,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="classEndHour" layoutX="327.0" layoutY="173.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                  <TextField fx:id="classEndHour" layoutX="325.0" layoutY="173.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
                   <TextField fx:id="classEndMinute" layoutX="403.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" />
                   <Label layoutX="51.0" layoutY="275.0" text="Class instructor:" textFill="WHITE">
                      <font>
@@ -472,24 +343,15 @@
                   <TextField fx:id="classInstructor" layoutX="325.0" layoutY="281.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="270.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="classesMain" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra" stylesheets="@css.css">
+            <AnchorPane fx:id="viewAllClassesPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
                <children>
-                  <Button fx:id="viewAllClasses" layoutY="43.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="View" textFill="WHITE">
+                  <ListView fx:id="allClassesList" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="626.0" />
+                  <Button fx:id="refreshClasses" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Refresh" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="editClass" layoutY="119.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Search" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="createClass" layoutY="195.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Create" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="export" layoutY="272.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Export" textFill="WHITE">
+                  <Button fx:id="removeAllClasses" layoutX="238.0" layoutY="348.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove all" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -513,32 +375,6 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="editClassPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
-                     <children>
-                        <Label layoutX="21.0" layoutY="284.0" text="Class end time:" />
-                        <ListView fx:id="classEditResult" layoutX="14.0" layoutY="14.0" prefHeight="157.0" prefWidth="422.0" />
-                        <Label layoutX="16.0" layoutY="190.0" text="Class name:" />
-                        <Label layoutX="17.0" layoutY="218.0" text="Class date:" />
-                        <Label layoutX="16.0" layoutY="250.0" text="Class start time:" />
-                        <Label layoutX="20.0" layoutY="319.0" text="Class spots:" />
-                        <Label layoutX="19.0" layoutY="351.0" text="Class available spots:" />
-                        <Label layoutX="21.0" layoutY="378.0" text="Class Instructor:" />
-                        <TextField fx:id="newClassName" layoutX="176.0" layoutY="186.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="211.0" />
-                        <TextField fx:id="newClassStartHour" layoutX="176.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="newClassStartMinute" layoutX="253.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="newClassSpots" layoutX="181.0" layoutY="315.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="newClassAvailableSpots" layoutX="181.0" layoutY="347.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="newClassInstructor" layoutX="181.0" layoutY="374.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="211.0" />
-                        <DatePicker fx:id="newClassDate" layoutX="176.0" layoutY="214.0" onAction="#classesHandle" />
-                        <Button fx:id="saveChangesClass" layoutX="157.0" layoutY="416.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="70.0" prefWidth="136.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Button>
-                        <TextField fx:id="newClassEndHour" layoutX="176.0" layoutY="280.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="newClassEndMinute" layoutX="253.0" layoutY="280.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                     </children>
-                  </AnchorPane>
                   <AnchorPane fx:id="searchClassesByNamePane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
                      <children>
                         <Label layoutX="48.0" layoutY="140.0" text="Name:" textFill="WHITE">
@@ -546,25 +382,25 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <Label layoutX="48.0" layoutY="198.0" text="Date:" textFill="WHITE">
+                        <Label layoutX="48.0" layoutY="186.0" text="Date:" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
                         <TextField fx:id="className1" layoutX="211.0" layoutY="146.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="228.0" />
-                        <DatePicker fx:id="classDate1" layoutX="211.0" layoutY="204.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="228.0" />
+                        <DatePicker fx:id="classDate1" layoutX="211.0" layoutY="192.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="228.0" />
                         <Button fx:id="searchClassesByNameButton" layoutX="125.0" layoutY="301.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Search" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Label layoutX="48.0" layoutY="240.0" text="Start time:" textFill="WHITE">
+                        <Label layoutX="49.0" layoutY="228.0" text="Start time:" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="classSearchTimeHour" layoutX="211.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
-                        <TextField fx:id="classSearchTimeMinute" layoutX="296.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="classSearchTimeHour" layoutX="211.0" layoutY="238.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="classSearchTimeMinute" layoutX="296.0" layoutY="238.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="searchClassesPane" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra-2" stylesheets="@css.css">
@@ -581,6 +417,202 @@
                         </Label>
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="editClassPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <Label layoutX="18.0" layoutY="284.0" text="Class end time:" textFill="WHITE" />
+                        <ListView fx:id="classEditResult" layoutX="14.0" layoutY="14.0" prefHeight="157.0" prefWidth="422.0" />
+                        <Label layoutX="19.0" layoutY="186.0" text="Class name:" textFill="WHITE" />
+                        <Label layoutX="17.0" layoutY="218.0" text="Class date:" textFill="WHITE" />
+                        <Label layoutX="16.0" layoutY="250.0" text="Class start time:" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="319.0" text="Class spots:" textFill="WHITE" />
+                        <Label layoutX="19.0" layoutY="351.0" text="Class available spots:" textFill="WHITE" />
+                        <Label layoutX="19.0" layoutY="387.0" text="Class Instructor:" textFill="WHITE" />
+                        <TextField fx:id="newClassName" layoutX="176.0" layoutY="182.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="211.0" />
+                        <TextField fx:id="newClassStartHour" layoutX="176.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="newClassStartMinute" layoutX="244.0" layoutY="246.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="newClassSpots" layoutX="176.0" layoutY="315.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="newClassAvailableSpots" layoutX="176.0" layoutY="347.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="newClassInstructor" layoutX="177.0" layoutY="383.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="211.0" />
+                        <DatePicker fx:id="newClassDate" layoutX="176.0" layoutY="214.0" onAction="#classesHandle" />
+                        <Button fx:id="saveChangesClass" layoutX="157.0" layoutY="416.0" mnemonicParsing="false" onAction="#classesHandle" prefHeight="70.0" prefWidth="136.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="newClassEndHour" layoutX="176.0" layoutY="280.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                        <TextField fx:id="newClassEndMinute" layoutX="244.0" layoutY="280.0" onAction="#classesHandle" prefHeight="25.0" prefWidth="58.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="instructorsPane" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="850.0" styleClass="instructors" stylesheets="@css.css">
+         <children>
+            <AnchorPane fx:id="allInstructorsPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
+               <children>
+                  <ListView fx:id="fullInstructorList" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="626.0" />
+                  <Button fx:id="removeAllInstructors" layoutX="14.0" layoutY="378.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove All" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="refreshList" layoutX="14.0" layoutY="296.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Refresh" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="editInstructorPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
+               <children>
+                  <AnchorPane fx:id="searchInstructorByPhoneNumberPane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <Button fx:id="SearchInstructorByPhoneNumberButton" layoutX="147.0" layoutY="250.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Search" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="searchInstructorPhoneNumber" layoutX="225.0" layoutY="187.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="180.0" />
+                        <Label layoutX="23.0" layoutY="181.0" text="Phone number:" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="searchResult" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <ListView fx:id="searchResultList" layoutX="34.0" layoutY="32.0" prefHeight="157.0" prefWidth="370.0" />
+                        <Button fx:id="editInstructorButton" layoutX="34.0" layoutY="241.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Edit" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeInstructorButton" layoutX="34.0" layoutY="319.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Remove" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="editSelectedInstructor" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <ListView fx:id="currentInstructorData" layoutX="25.0" layoutY="42.0" prefHeight="126.0" prefWidth="400.0" />
+                        <TextField fx:id="newName" layoutX="276.0" layoutY="197.0" onAction="#instructorHandle" />
+                        <TextField fx:id="newLastName" layoutX="276.0" layoutY="234.0" onAction="#instructorHandle" />
+                        <TextField fx:id="newEmail" layoutX="276.0" layoutY="274.0" onAction="#instructorHandle" />
+                        <TextField fx:id="newPhNumber" layoutX="276.0" layoutY="311.0" onAction="#instructorHandle" />
+                        <TextField fx:id="newAddress" layoutX="276.0" layoutY="348.0" onAction="#instructorHandle" />
+                        <Label layoutX="46.0" layoutY="201.0" text="New name:" textFill="WHITE" />
+                        <Label layoutX="46.0" layoutY="238.0" text="New last name:" textFill="WHITE" />
+                        <Label layoutX="46.0" layoutY="278.0" text="New email:" textFill="WHITE" />
+                        <Label layoutX="46.0" layoutY="315.0" text="New phone number:" textFill="WHITE" />
+                        <Label layoutX="46.0" layoutY="352.0" text="New address:" textFill="WHITE" />
+                        <Button fx:id="saveChangesInstructor" layoutX="138.0" layoutY="401.0" mnemonicParsing="false" onAction="#instructorHandle" prefHeight="62.0" prefWidth="149.0" styleClass="main-button" stylesheets="@css.css" text="Save" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="searchInstructorBy" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra-2" stylesheets="@css.css">
+                     <children>
+                        <Button fx:id="searchInstructorByName" layoutY="120.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Name" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="searchInstructorByPhoneNumber" layoutY="197.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Phone" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="37.0" layoutY="59.0" text="Search by" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="searchInstructorByNamePane" layoutX="200.0" prefHeight="500.0" prefWidth="450.0" styleClass="main-extra-pane-2" stylesheets="@css.css">
+                     <children>
+                        <Label layoutX="26.0" layoutY="161.0" text="First name:" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="214.0" text="Last name:" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="searchInstructorName" layoutX="183.0" layoutY="166.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                        <TextField fx:id="searchInstructorLastName" layoutX="183.0" layoutY="220.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                        <Button fx:id="searchInstructorByNameButton" layoutX="164.0" layoutY="280.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Search" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="instructorsMain" prefHeight="500.0" prefWidth="200.0" styleClass="main-extra" stylesheets="@css.css">
+               <children>
+                  <Button fx:id="editInstructor" layoutY="43.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Search" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="registerInstructor" layoutY="120.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="Register" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="allInstructors" layoutY="197.0" mnemonicParsing="false" onAction="#handleClickMe" prefHeight="60.0" prefWidth="200.0" styleClass="main-button" stylesheets="@css.css" text="View" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="registerInstructorPane" layoutX="200.0" prefHeight="500.0" prefWidth="650.0" styleClass="main-extra-pane" stylesheets="@css.css">
+               <children>
+                  <Label layoutX="107.0" layoutY="90.0" text="First name:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="143.0" text="Last name:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="197.0" text="Phone number:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="245.0" text="Email:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" layoutY="294.0" text="Address:" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="instructorNameField" layoutX="315.0" layoutY="96.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                  <TextField fx:id="instructorLastNameField" layoutX="315.0" layoutY="149.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                  <TextField fx:id="instructorPhNrField" layoutX="315.0" layoutY="203.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                  <TextField fx:id="instructorEmailField" layoutX="315.0" layoutY="251.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                  <TextField fx:id="instructorAddressField" layoutX="315.0" layoutY="300.0" onAction="#instructorHandle" prefHeight="25.0" prefWidth="228.0" />
+                  <Button fx:id="addInstructor" layoutX="220.0" layoutY="351.0" mnemonicParsing="false" onAction="#instructorHandle" styleClass="search-button" stylesheets="@css.css" text="Add instructor" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children></AnchorPane>

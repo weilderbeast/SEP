@@ -1,17 +1,8 @@
-@font-face{
- font-family: Poppins;
- src: url('Poppins-Regular.ttf');
-}
-.label{
-  -fx-font-family: 'Poppins';
-}
 .main-left{
   -fx-background-color:#171717;
-  -fx-font-family:'Poppins';
 }
 .main-right{
  -fx-background-color:#171717;
- -fx-font-family:'Poppins';
 }
 .main-extra{
   -fx-background-color:#474747;
@@ -25,14 +16,10 @@
 .main-extra-pane-2{
   -fx-background-color:#a8a8a8;
 }
-.title{
-  -fx-font-family:'Poppins';
-}
 .main-button{
   -fx-background-color:#636363;
   -fx-border-width: 8;
   -fx-border-color: transparent transparent transparent #87cefa;
-  -fx-font-family:'Poppins';
   -fx-background-insets:0;
   -fx-font-size:25px;
 }
@@ -49,24 +36,16 @@
   -fx-background-insets:0;
   -fx-font-size:25px;
 }
-.list-view{
--fx-font-family:'Poppins';
-}
-.text-field{
--fx-font-family:'Poppins';
-}
 .list-cell{
 -fx-font-size:16px;
 }
 .search-button{
   -fx-background-color:#636363;
-  -fx-font-family:'Poppins';
   -fx-background-insets:0;
   -fx-font-size:25px;
 }
-
 .home{
--fx-background-color: red;
+-fx-background-color: #474747;
 }
 .classes{
 -fx-background-color: green;
