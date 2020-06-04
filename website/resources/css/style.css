@@ -1324,7 +1324,7 @@ nav ul li a:hover {
     the 2 banners
 */
 #gym-offer {
-    background-image: url(../images/gym-offer.jfif);
+    background-image: url(../images/gym-offer.jpg);
     background-size: cover;
     background-position: center;
     height: 40vh;
@@ -2520,6 +2520,7 @@ input[type=text]:focus {
     background-image: url(../images/breakfast-banner.jpg);
     background-position: center;
     background-size: cover;
+    text-align: center;
     height: 40vh;
     width: 100vw;
 }
@@ -2583,6 +2584,16 @@ input[type=text]:focus {
     .nutrition-lunch,
     .nutrition-dinner {
         height: 50vh;
+    }
+
+    .nutrition-breakfast-banner .nutrition-title{
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:630px){
+    .nutrition-breakfast-banner .nutrition-title{
+        font-size: 35px;
     }
 }
 
